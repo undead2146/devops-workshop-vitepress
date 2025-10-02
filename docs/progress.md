@@ -19,7 +19,7 @@
 
 ## Personal Workshop Information
 
-**Participant Name:** `[Edit this with your name during Phase 1]`  
+**Participant Name:** `[Jonas]`  
 **Workshop Date:** `[Add today's date]`  
 **Learning Goal:** `[What do you want to achieve? e.g., "Build my first CI/CD pipeline"]`  
 **GitHub Username:** `[Your GitHub username]`  
