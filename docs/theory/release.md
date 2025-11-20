@@ -1,26 +1,102 @@
-# Release Phase Theory
+# Release Fase Theorie
 
-## What is the Release Phase?
-Release creates versioned snapshots/artifacts. For VitePress: Orthogonal to deploy—tag for milestones (e.g., ZIP of dist/ for sharing), while CD keeps site live. In DevOps, promotes Lean (milestones without halting flow) and Sharing (artifacts for audits); GitHub Actions automates on tags.
+## Wat is de Release Fase?
 
-## Why Release Phase?
-Build creates artifacts every time, but Release versions them (e.g., v1.0.0 ZIP with changelog)—why not release every build? Tags mark significant updates (milestones) for tracking/rollback, avoiding version clutter; enables sharing (e.g., ZIP for offline review) without disrupting continuous deploys. Analogy: Saving document versions—tag for "final" shares. Next: Deploy publishes the latest artifact live.
+De **Release Fase** creëert versioned snapshots van je geteste artifact voor distributie.
 
-## Key Concepts
-- **Semantic Versioning (SemVer)**: MAJOR.MINOR.PATCH (e.g., 1.0.0). MAJOR: Breaks; MINOR: Features; PATCH: Fixes. Why SemVer? Clear change tracking (Measurement).
-- **Artifacts**: ZIP dist/ + changelog; upload to GitHub Releases. Why ZIP? Portable snapshot of validated artifact (from Test).
-- **Triggers**: Manual (`git tag v1.0.0; git push --tags`); Auto (semantic-release). Why manual first? Teaches control before automation.
-- **VitePress Nuance**: Release = Snapshot (offline/audit); Deploy = Live (Pages). No pause: Deploy every merge, release on tags.
+In deze workshop:
+- **Input**: Getest artifact
+- **Trigger**: Git tag (bijv. `v1.0.0`)
+- **Output**: GitHub Release met downloadbare ZIP
+
+**Doel**: Stabiele, gedocumenteerde versies voor distributie en archivering.
+
+**CALMS Verbinding**:
+- **Delen**: Releases maken software toegankelijk voor stakeholders
+- **Lean**: Geautomatiseerde release creatie
+
+## Waarom Releasen?
+
+Zonder releases:
+- 🚨 Geen duidelijke versiegeschiedenis
+- 🚨 Moeilijk om specifieke versies te distribueren
+- 🚨 Geen rollback mogelijkheden
+
+Met releases:
+- ✅ Duidelijke versienummers
+- ✅ Downloadbare snapshots
+- ✅ Changelog documentatie
+- ✅ Rollback naar eerdere versies
+
+**Analogie**: Releases zijn zoals boek edities—v1.0 is de eerste druk, v1.1 is de herziene editie met correcties.
+
+## Kernconcepten
+
+### 1. Semantic Versioning (SemVer)
+Formaat: `MAJOR.MINOR.PATCH`
+
+- **MAJOR** (1.0.0 → 2.0.0): Breaking changes
+- **MINOR** (1.0.0 → 1.1.0): Nieuwe features (backward compatible)
+- **PATCH** (1.0.0 → 1.0.1): Bug fixes (backward compatible)
+
+**Voorbeeld**:
+- `v1.0.0`: Eerste stabiele release
+- `v1.1.0`: Nieuwe feature toegevoegd
+- `v1.1.1`: Bug fix
+- `v2.0.0`: Breaking change
+
+### 2. Git Tags
+Tags markeren specifieke commits als releases.
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+**Waarom tags?** Ze zijn onveranderlijk—een tag wijst altijd naar dezelfde code.
+
+### 3. Release vs Deploy
+- **Release**: Versioned snapshot (ZIP, changelog) voor distributie
+- **Deploy**: Live site updaten
+
+**Waarom beide?**
+- Deploy vaak (elke merge naar main)
+- Release spaarzaam (alleen bij milestones)
+
+### 4. Release Assets
+Downloadbare bestanden bij een release:
+- ZIP van het artifact
+- Changelogs
+- Documentatie
+
+## DevOps Maturity
+
+- **Level 1**: Handmatige ZIP creatie en email
+- **Level 2**: Handmatige GitHub releases
+- **Level 3**: Geautomatiseerde releases bij tags (workshop doel)
+- **Level 4**: Semantic release automation
+
+## Visualisatie
 
 ```mermaid
 graph TD
-  A[Build Artifact] --> B[Tag e.g., v1.0.0]
-  B --> C[Run release.sh: ZIP + Changelog]
-  C --> D[GitHub Release: Downloadable Asset]
-  D --> E[Share/Audit; Continue Deploys]
+  A[Tag Gepusht v1.0.0] --> B[Trigger Release Workflow]
+  B --> C[Build Artifact]
+  C --> D[Creëer ZIP]
+  D --> E[Genereer Changelog]
+  E --> F[Publiceer GitHub Release]
+  F --> G[Stakeholders Downloaden]
 ```
 
-## Pros/Cons & Maturity
-Pros: Offline access, rollbacks (use ZIP if deploy fails). Cons: Manual (automate for Level 5). Workshop: Tag post-test. Why? Practices versioning without over-versioning.
+## Q&A
 
-Hands-On: /hands-on/test-release.md – Create v1.0.0! Reflection: Released versioned artifact—next, deploy makes it live.
+**V: Waarom niet bij elke build een release?**
+A: Releases zijn voor belangrijke milestones. Te veel releases creëren ruis. Deploys zijn voor frequente updates.
+
+**V: Wat zit er in de release ZIP?**
+A: Het gebouwde artifact (`.vitepress/dist/`)—klaar om te hosten op elke webserver.
+
+## Hands-On
+Ga naar [Hands-on: Test & Release](/hands-on/test-release) om je eerste release te maken!
+
+**Reflectie**: Released artifact → nu klaar voor **Deploy** (automatisch live gaan).

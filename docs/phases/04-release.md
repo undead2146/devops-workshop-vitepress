@@ -1,69 +1,77 @@
-# Phase 4: Release - Version Management
+# Fase 4: Release - Versiebeheer
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🏷️ Release Phase</span>
-    <span class="workshop-status status-progress">In Progress</span>
+    <span class="phase-title">🏷️ Release Fase</span>
+    <span class="phase-title-status status-progress">In Uitvoering</span>
   </div>
-  <p>Create versioned releases with semantic versioning and downloadable artifacts</p>
+  <p>Creëer versioned releases met semantic versioning en downloadbare artifacts</p>
 </div>
 
-## Learning Objectives
+## Leerdoelen
 
-By the end of this phase, you will:
-- ✅ Understand semantic versioning (SemVer)
-- ✅ Create automated releases triggered by Git tags
-- ✅ Generate release notes and downloadable assets
-- ✅ Distinguish between releases and deployments
-- ✅ Update your progress tracker with release achievements
+Aan het einde van deze fase zul je:
+- ✅ Semantic versioning (SemVer) begrijpen
+- ✅ Geautomatiseerde releases aanmaken getriggerd door Git tags
+- ✅ Release notes en downloadbare assets genereren
+- ✅ Het verschil begrijpen tussen releases en deployments
+- ✅ Je voortgangstracker updaten met release prestaties
 
-## Theory: Why the Release Phase Matters
+## Theorie: Waarom de Release Fase Belangrijk Is
 
-### The Problem Without Proper Releases
-Without structured releases, software distribution becomes chaotic:
-- 🚨 No clear versioning strategy leads to confusion
-- 🚨 Difficult to track what changes are in each version
-- 🚨 No way to distribute stable snapshots
-- 🚨 Hard to rollback to previous versions
+### Het Probleem Zonder Goede Releases
+Zonder gestructureerde releases wordt softwaredistributie chaotisch:
+- 🚨 Geen duidelijke versioning strategie leidt tot verwarring
+- 🚨 Moeilijk om bij te houden welke wijzigingen in elke versie zitten
+- 🚨 Geen manier om stabiele snapshots te distribueren
+- 🚨 Lastig om terug te rollen naar vorige versies
 
-### The DevOps Solution: Automated Releases
+### De DevOps Oplossing: Geautomatiseerde Releases
 
-The Release phase supports **Lean** and **Sharing** from the CALMS framework:
+De Release fase ondersteunt **Lean** en **Delen** uit het CALMS framework:
 
 ```mermaid
 graph TD
-  A[Code Changes] --> B[Create Git Tag]
+  A[Code Wijzigingen] --> B[Creëer Git Tag]
   B --> C[Trigger Release Workflow]
-  C --> D[Build Artifacts]
-  D --> E[Generate Release Notes]
-  E --> F[Create GitHub Release]
+  C --> D[Bouw Artifacts]
+  D --> E[Genereer Release Notes]
+  E --> F[Creëer GitHub Release]
   F --> G[Upload Assets]
-  G --> H[Share with Team]
+  G --> H[Deel met Team]
 ```
 
-### Key Concepts
+### Kernconcepten
 
 #### 1. Semantic Versioning (SemVer)
-Version numbers follow the pattern: `MAJOR.MINOR.PATCH`
+Versienummers volgen het patroon: `MAJOR.MINOR.PATCH`
 
 - **MAJOR**: Breaking changes (1.0.0 → 2.0.0)
-- **MINOR**: New features, backward compatible (1.0.0 → 1.1.0)  
+- **MINOR**: Nieuwe features, backward compatible (1.0.0 → 1.1.0)
 - **PATCH**: Bug fixes, backward compatible (1.0.0 → 1.0.1)
 
+**Voorbeelden:**
+- `v1.0.0` → Eerste stabiele release
+- `v1.1.0` → Nieuwe feature toegevoegd
+- `v1.1.1` → Bug fix in v1.1.0
+- `v2.0.0` → Breaking change, niet backward compatible
+
 #### 2. Releases vs. Deployments
-- **Release**: Creates a versioned snapshot with assets (ZIP, changelogs)
-- **Deployment**: Publishes the latest code to production (live site)
-- **Why both?**: Releases provide stable distribution points; deployments keep the site current
+- **Release**: Creëert een versioned snapshot met assets (ZIP, changelogs)
+- **Deployment**: Publiceert de laatste code naar productie (live site)
+- **Waarom beide?**: Releases bieden stabiele distributiepunten; deployments houden de site actueel
 
-## Hands-On Practice
+**Analogie:** Een release is als een boek uitgeven (versie 1.0), deployment is als je website updaten met nieuwe content.
 
-### Step 1: Add Release Job to CI Workflow
+## Hands-On Oefening
+
+### Stap 1: Voeg Release Job Toe aan CI Workflow
 <div class="step-counter">1</div>
 
-Update your `.github/workflows/ci.yml` to include release automation:
+Update je `.github/workflows/ci.yml` om release automatisering toe te voegen:
 
 ```yaml
-# Add this job after your existing build and test jobs
+# Voeg deze job toe na je bestaande build en test jobs
 release:
   if: startsWith(github.ref, 'refs/tags/v')
   needs: [build, test]
@@ -99,108 +107,148 @@ release:
       with:
         files: workshop-site-${{ github.ref_name }}.zip
         generate_release_notes: true
-        name: DevOps Workshop v${{ github.ref_name }}
+        name: DevOps Workshop ${{ github.ref_name }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### Step 2: Test Locally and Commit
+**Wat doet deze workflow?**
+- **Trigger**: Draait alleen wanneer een tag beginnend met 'v' wordt gepusht
+- **Dependencies**: Wacht tot build en test jobs slagen
+- **Archive**: Creëert een ZIP van de gebouwde site
+- **Release**: Maakt automatisch een GitHub release met notes
+
+### Stap 2: Test Lokaal en Commit
 <div class="step-counter">2</div>
 
 ```bash
-# Create a new branch for release functionality
+# Creëer een nieuwe branch voor release functionaliteit
 git checkout -b feat/add-releases
 
-# Test build locally
+# Test build lokaal
 pnpm build
 
-# Commit the workflow changes
+# Commit de workflow wijzigingen
 git add .github/workflows/ci.yml
-git commit -m "feat: add automated release workflow
+git commit -m "feat: voeg geautomatiseerde release workflow toe
 
-- Trigger releases on version tags
-- Generate downloadable site archives
-- Auto-create GitHub releases with notes"
+- Trigger releases bij versie tags
+- Genereer downloadbare site archives
+- Auto-creëer GitHub releases met notes"
 
-# Push and merge via PR
+# Push en merge via PR
 git push origin feat/add-releases
 ```
 
-### Step 3: Create Your First Release
+### Stap 3: Creëer Je Eerste Release
 <div class="step-counter">3</div>
 
-Now create your first version tag to trigger a release:
+Nu je eerste versie tag aanmaken om een release te triggeren:
 
 ```bash
-# Switch to main branch and pull latest
+# Schakel naar main branch en pull laatste wijzigingen
 git checkout main
 git pull origin main
 
-# Create and push a version tag
+# Creëer en push een versie tag
 git tag v1.0.0
 git push origin v1.0.0
 ```
 
-### Step 4: Verify Your Release
+**Wat gebeurt er nu?**
+1. GitHub detecteert de nieuwe tag
+2. Release workflow wordt automatisch getriggerd
+3. Site wordt gebouwd en in ZIP verpakt
+4. GitHub release wordt aangemaakt met downloadbare assets
+
+### Stap 4: Verifieer Je Release
 <div class="step-counter">4</div>
 
-1. **Go to GitHub Actions** and watch the release workflow run
-2. **Visit your repository's Releases tab**
-3. **Download the generated ZIP file**
-4. **Extract and verify** it contains your built site
+1. **Ga naar GitHub Actions** en bekijk de release workflow run
+2. **Bezoek je repository's Releases tab**
+3. **Download het gegenereerde ZIP bestand**
+4. **Pak uit en verifieer** dat het je gebouwde site bevat
 
-### Step 5: Update Your Progress Tracker
+<div class="success-box">
+🎉 <strong>Je Eerste Release!</strong> Je hebt nu een professionele, downloadbare distributie van je workshop site!
+</div>
+
+### Stap 5: Update Je Voortgangstracker
 <div class="step-counter">5</div>
 
-Edit your `docs/progress.md` to mark Phase 4 complete:
+Bewerk je `docs/progress.md` om Fase 4 als compleet te markeren:
 
 ```markdown
-### Phase 4: Release - Version Management 🏷️
+### Fase 4: Release - Versiebeheer 🏷️
 
-**Completion Checklist:**
-- [x] Added release job to CI workflow (triggered by tags)
-- [x] Created and pushed my first tag (`v1.0.0`)
-- [x] Generated a release with downloadable assets
-- [x] Downloaded and verified release ZIP file
-- [x] Understood the difference between releases and deployments
+**Voltooiing Checklist:**
+- [x] Release job toegevoegd aan CI workflow (getriggerd door tags)
+- [x] Mijn eerste tag aangemaakt en gepusht (`v1.0.0`)
+- [x] Een release gegenereerd met downloadbare assets
+- [x] Release ZIP bestand gedownload en geverifieerd
+- [x] Het verschil begrepen tussen releases en deployments
 
-**My Release Phase Notes:**
+**Mijn Release Fase Notities:**
 ```
-Release management brings structure to software distribution!
-- Semantic versioning provides clear change communication
-- Automated releases eliminate manual packaging errors
-- ZIP archives enable offline distribution and backup
-- GitHub releases create a professional distribution experience
-```
-
-**Timestamp Completed:** [Current date/time]
+Release management brengt structuur naar softwaredistributie!
+- Semantic versioning biedt duidelijke change communicatie
+- Geautomatiseerde releases elimineren handmatige packaging fouten
+- ZIP archives maken offline distributie en backup mogelijk
+- GitHub releases creëren een professionele distributie ervaring
 ```
 
-## Success Criteria
+**Tijdstempel Voltooid:** [Huidige datum/tijd]
+```
 
-✅ **Phase 4 Complete** when you have:
-- [x] Automated release workflow triggered by tags
-- [x] Successfully created v1.0.0 release
-- [x] Downloaded and verified release assets
-- [x] Updated progress tracker with completion
+## Validatie & Volgende Stappen
 
-## Understanding Release Strategy
+### ✅ Succescriteria
+
+**Fase 4 Compleet** wanneer je hebt:
+- [x] Geautomatiseerde release workflow getriggerd door tags
+- [x] Succesvol v1.0.0 release aangemaakt
+- [x] Release assets gedownload en geverifieerd
+- [x] Voortgangstracker bijgewerkt met voltooiing
+
+### 💡 Release Best Practices
 
 <div class="tip-box">
-💡 <strong>Release Best Practices:</strong>
+<strong>Wanneer Taggen?</strong>
 <ul>
-<li><strong>Tag thoughtfully:</strong> Don't tag every commit—reserve for milestone versions</li>
-<li><strong>Generate notes:</strong> Auto-generated release notes help users understand changes</li>
-<li><strong>Include assets:</strong> ZIP files enable offline distribution and archival</li>
-<li><strong>Semantic versioning:</strong> Helps users understand the impact of updates</li>
+<li><strong>Tag doordacht:</strong> Niet elke commit taggen—reserveer voor milestone versies</li>
+<li><strong>Genereer notes:</strong> Auto-gegenereerde release notes helpen gebruikers wijzigingen begrijpen</li>
+<li><strong>Voeg assets toe:</strong> ZIP bestanden maken offline distributie en archivering mogelijk</li>
+<li><strong>Semantic versioning:</strong> Helpt gebruikers de impact van updates begrijpen</li>
 </ul>
 </div>
 
-### When to Release vs. Deploy
+### Wanneer Releasen vs. Deployen
 
-- **Release** (v1.0.0): For milestones, major features, or distribution needs
-- **Deploy**: Every merge to main for continuous user value
+- **Release** (v1.0.0): Voor milestones, grote features, of distributiebehoeften
+- **Deploy**: Elke merge naar main voor continue gebruikerswaarde
 
-This dual approach enables both **continuous delivery** and **stable distribution**.
+Deze dubbele aanpak maakt zowel **continuous delivery** als **stabiele distributie** mogelijk.
 
-Continue to Phase 5: Deploy
+### 🎯 Wat We Hebben Bereikt
+
+**CALMS Framework Verbindingen:**
+- **Lean**: Gestroomlijnde distributie zonder handmatig werk
+- **Delen**: Professionele manier om software te delen met stakeholders
+- **Meting**: Versienummers maken progress tracking mogelijk
+
+**Praktische Voordelen:**
+- ✅ Duidelijke versiegeschiedenis
+- ✅ Downloadbare snapshots voor offline gebruik
+- ✅ Professionele distributie voor stakeholders
+- ✅ Rollback mogelijkheden naar eerdere versies
+
+### 🚀 Volgende Fase
+
+Nu je releases hebt, is het tijd voor de finale stap: **automatische deployment naar productie**!
+
+[Ga verder naar Fase 5: Deploy →](/phases/05-deploy)
+
+<div class="workshop-callout">
+  <div class="workshop-callout-title">🏷️ Release Strategie</div>
+  <p>Releases zijn je "officiële" versies—gebruik ze voor belangrijke milestones. Deployment is je "live" site—update het vaak. Samen geven ze je zowel stabiliteit als snelheid!</p>
+</div>

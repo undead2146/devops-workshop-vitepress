@@ -1,205 +1,205 @@
-# Phase 1: Code - Collaborative Development
+# Fase 1: Code - Collaboratieve Ontwikkeling
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🤝 Code Phase</span>
-    <span class="workshop-status status-progress">In Progress</span>
+    <span class="phase-title">🤝 Code Fase</span>
+    <span class="workshop-status status-progress">In Uitvoering</span>
   </div>
-  <p>Learn collaborative development through Git workflows and Pull Requests</p>
+  <p>Leer collaboratieve ontwikkeling via Git workflows en Pull Requests</p>
 </div>
 
 <div class="workshop-callout">
-  <div class="workshop-callout-title">🎯 Your First DevOps Task</div>
-  <p><strong>You'll start by editing your Progress Tracker!</strong> This isn't just tracking—it's practicing the Code phase through real Git workflows. Every edit teaches collaboration fundamentals.</p>
+  <div class="workshop-callout-title">🎯 Jouw Eerste DevOps Taak</div>
+  <p><strong>Je begint met het bewerken van je <a href="/progress">Voortgangstracker</a>!</strong> Dit is niet alleen bijhouden—het is het oefenen van de Code fase via echte Git workflows. Elke bewerking leert je samenwerking fundamenten.</p>
 </div>
 
-## Learning Objectives
+## Leerdoelen
 
-By the end of this phase, you will:
-- ✅ Understand Git branching strategies
-- ✅ Create and merge Pull Requests  
-- ✅ Practice collaborative code review
-- ✅ **Personalize your progress tracker** (your first DevOps deliverable!)
-- ✅ Set up the foundation for CI/CD
+Aan het einde van deze fase zul je:
+- ✅ Git branching strategieën begrijpen
+- ✅ Pull Requests aanmaken en mergen
+- ✅ Collaboratieve code review oefenen
+- ✅ **Je voortgangstracker personaliseren** (je eerste DevOps deliverable!)
+- ✅ De basis leggen voor CI/CD
 
-## Theory: Why the Code Phase Matters
+## Theorie: Waarom de Code Fase Belangrijk Is
 
-### The Problem Without Version Control
-Imagine a team working on a project where everyone edits files directly on a shared drive:
-- 🚨 Conflicting changes overwrite each other
-- 🚨 No history of what changed or why
-- 🚨 No way to undo problematic changes
-- 🚨 No coordination between team members
+### Het Probleem Zonder Versiecontrole
+Stel je een team voor dat aan een project werkt waarbij iedereen bestanden direct op een gedeelde schijf bewerkt:
+- 🚨 Conflicterende wijzigingen overschrijven elkaar
+- 🚨 Geen geschiedenis van wat er is veranderd of waarom
+- 🚨 Geen manier om problematische wijzigingen ongedaan te maken
+- 🚨 Geen coördinatie tussen teamleden
 
-### The DevOps Solution: Git Workflow
+### De DevOps Oplossing: Git Workflow
 
-The Code phase establishes **Culture** and **Sharing** from the CALMS framework:
+De Code fase vestigt **Cultuur** en **Delen** uit het CALMS framework:
 
 ```mermaid
 graph LR
-  A[Individual Work] --> B[Feature Branch]
-  B --> C[Commit Changes]
-  C --> D[Push to Remote]
-  D --> E[Create Pull Request]
+  A[Individueel Werk] --> B[Feature Branch]
+  B --> C[Commit Wijzigingen]
+  C --> D[Push naar Remote]
+  D --> E[Creëer Pull Request]
   E --> F[Code Review]
-  F --> G[Merge to Main]
+  F --> G[Merge naar Main]
   G --> H[Deploy Pipeline]
 ```
 
-### Key Concepts
+### Kernconcepten
 
-#### 1. Branching Strategy
-- **Main branch**: Always deployable, production-ready code
-- **Feature branches**: Isolated development for specific features
-- **Pull Requests**: Controlled way to merge changes with review
+#### 1. Branching Strategie
+- **Main branch**: Altijd deploybaar, production-ready code
+- **Feature branches**: Geïsoleerde ontwikkeling voor specifieke features
+- **Pull Requests**: Gecontroleerde manier om wijzigingen te mergen met review
 
-#### 2. Atomic Commits
-Each commit should represent a single, complete change:
+#### 2. Atomaire Commits
+Elke commit moet een enkele, complete wijziging representeren:
 
 ```bash
-# Good: Specific, focused commits
-git commit -m "feat: add user authentication form"
-git commit -m "fix: resolve mobile layout issue on login page"
+# Goed: Specifiek, gefocuste commits
+git commit -m \"feat: voeg gebruiker authenticatie formulier toe\"
+git commit -m \"fix: los mobiele layout probleem op login pagina op\"
 
-# Bad: Vague, mixed-purpose commits  
-git commit -m "various fixes and updates"
+# Slecht: Vage, gemengde commits
+git commit -m \"verschillende fixes en updates\"
 ```
 
 #### 3. Conventional Commits
-Using a consistent format helps automation and clarity:
+Een consistent formaat gebruiken helpt bij automatisering en duidelijkheid:
 
-- `feat:` - New features
-- `fix:` - Bug fixes  
-- `docs:` - Documentation changes
-- `refactor:` - Code restructuring without feature changes
-- `test:` - Adding or correcting tests
-- `chore:` - Maintenance tasks (e.g., updating dependencies)
+- `feat:` - Nieuwe features
+- `fix:` - Bug fixes
+- `docs:` - Documentatie wijzigingen
+- `refactor:` - Code herstructurering zonder feature wijzigingen
+- `test:` - Tests toevoegen of corrigeren
+- `chore:` - Onderhoudstaken (bijv. dependencies updaten)
 
-## Hands-On Practice
+## Hands-On Oefening
 
-### Step 1: Fork and Clone
-<div class="step-counter">1</div>
+### Stap 1: Fork en Clone
+<div class=\"step-counter\">1</div>
 
-First, create your own copy of the workshop repository:
+Maak eerst je eigen kopie van de workshop repository:
 
-1. **Fork the repository**
-   - Go to the workshop GitHub repository
-   - Click the "Fork" button in the top right
-   - Choose your personal account as the destination
+1. **Fork de repository**
+   - Ga naar de workshop GitHub repository
+   - Klik op de \"Fork\" knop rechtsboven
+   - Kies je persoonlijke account als bestemming
 
-2. **Clone your fork locally**
+2. **Clone je fork lokaal**
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/devops-workshop-vitepress.git
+   git clone https://github.com/JOUW_GEBRUIKERSNAAM/devops-workshop-vitepress.git
    cd devops-workshop-vitepress
    ```
 
-3. **Set up the upstream remote**
+3. **Stel de upstream remote in**
 
    ```bash
-   git remote add upstream https://github.com/ORIGINAL_OWNER/devops-workshop-vitepress.git
-   git remote -v  # Verify both origin and upstream are set
+   git remote add upstream https://github.com/ORIGINELE_EIGENAAR/devops-workshop-vitepress.git
+   git remote -v  # Verifieer dat zowel origin als upstream zijn ingesteld
    ```
 
-### Step 2: Create Your First Feature Branch
-<div class="step-counter">2</div>
+### Stap 2: Creëer Je Eerste Feature Branch
+<div class=\"step-counter\">2</div>
 
-Never work directly on the main branch! Always create a feature branch:
+Werk nooit direct op de main branch! Maak altijd een feature branch:
 
 ```bash
-# Create and switch to a new feature branch
-git checkout -b feat/code-phase
+# Creëer en schakel naar een nieuwe feature branch
+git checkout -b feat/code-fase
 
-# Verify you're on the new branch
+# Verifieer dat je op de nieuwe branch bent
 git branch
 ```
 
-<div class="tip-box">
-💡 <strong>Naming Convention:</strong> Use descriptive branch names with prefixes like <code>feat/</code>, <code>fix/</code>, or <code>docs/</code>
+<div class=\"tip-box\">
+💡 <strong>Naamgevingsconventie:</strong> Gebruik beschrijvende branch namen met prefixen zoals <code>feat/</code>, <code>fix/</code>, of <code>docs/</code>
 </div>
 
-### Step 3: Make Your First Changes - Personalize Your Progress Tracker
-<div class="step-counter">3</div>
+### Stap 3: Maak Je Eerste Wijzigingen - Personaliseer Je Voortgangstracker
+<div class=\"step-counter\">3</div>
 
-**This is where DevOps practice begins!** You'll edit your progress tracker to learn Git workflows:
+**Hier begint DevOps oefening!** Je gaat je voortgangstracker bewerken om Git workflows te leren:
 
-1. **Open `docs/progress.md` in your editor**
+1. **Open `docs/progress.md` in je editor**
 
-2. **Personalize your workshop information:**
-
-   ```markdown
-   ## Personal Workshop Information
-
-   **Participant Name:** [Your Full Name]
-   **Workshop Date:** [Today's Date - e.g., January 15, 2025]
-   **Learning Goal:** [e.g., "Build my first CI/CD pipeline and understand DevOps fundamentals"]
-   **GitHub Username:** [your-github-username]
-   **Expected Site URL:** https://[your-username].github.io/devops-workshop-vitepress/
-   ```
-
-3. **Update Phase 1 status in your tracker:**
+2. **Personaliseer je workshop informatie:**
 
    ```markdown
-   ### Phase 1: Code - Collaborative Development 🤝
+   ## Persoonlijke Workshop Informatie
 
-   **Completion Checklist:**
-   - [x] Forked the workshop repository to my GitHub account
-   - [x] Cloned my fork locally and got the site running (`pnpm dev`)
-   - [x] Created my first feature branch (`feat/personalize-tracker`)
-   - [x] **Edited this progress tracker** with my personal information
-   - [ ] Made my first commit with a good commit message
-   - [ ] Pushed my branch to GitHub
-   - [ ] Created and merged my first Pull Request
-   - [ ] Verified my changes are live on the main branch
-
-   **My Code Phase Notes:**
-   ```
-   Started learning DevOps through hands-on practice!
-   - Git workflow feels more natural now
-   - Understanding how branches enable safe collaboration
-   - Excited to see my changes deploy automatically later
+   **Deelnemer Naam:** [Jouw Volledige Naam]
+   **Workshop Datum:** [Vandaag's Datum - bijv., 15 januari 2025]
+   **Doel:** [bijv., \"Bouw mijn eerste CI/CD pipeline en begrijp DevOps fundamenten\"]
+   **GitHub Gebruikersnaam:** [jouw-github-gebruikersnaam]
+   **Verwachte Site URL:** https://[jouw-gebruikersnaam].github.io/devops-workshop-vitepress/
    ```
 
-   **Timestamp Completed:** [Leave blank for now]
+3. **Update Fase 1 status in je tracker:**
+
+   ```markdown
+   ### Fase 1: Code - Collaboratieve Ontwikkeling 🤝
+
+   **Voltooiing Checklist:**
+   - [x] De workshop repository geforkt naar mijn GitHub account
+   - [x] Mijn fork lokaal gekloond en de site werkend gekregen (`pnpm dev`)
+   - [x] Mijn eerste feature branch aangemaakt (`feat/personaliseer-tracker`)
+   - [x] **Deze voortgangstracker bewerkt** met mijn persoonlijke informatie
+   - [ ] Mijn eerste commit gemaakt met een goede commit message
+   - [ ] Mijn branch gepusht naar GitHub
+   - [ ] Mijn eerste Pull Request aangemaakt en gemerged
+   - [ ] Geverifieerd dat mijn wijzigingen live zijn op de main branch
+
+   **Mijn Code Fase Notities:**
+   ```
+   Begonnen met DevOps leren door hands-on oefening!
+   - Git workflow voelt nu natuurlijker
+   - Begrijp hoe branches veilige samenwerking mogelijk maken
+   - Enthousiast om mijn wijzigingen later automatisch te zien deployen
    ```
 
-4. **Save the file**
+   **Tijdstempel Voltooid:** [Laat nu leeg]
+   ```
 
-<div class="tip-box">
-💡 <strong>Why This Matters:</strong> Editing your progress tracker teaches Git workflows while creating your personal learning record. This dual-purpose approach demonstrates DevOps efficiency principles!
+4. **Sla het bestand op**
+
+<div class=\"tip-box\">
+💡 <strong>Waarom Dit Belangrijk Is:</strong> Het bewerken van je voortgangstracker leert Git workflows terwijl je je persoonlijke leerrecord creëert. Deze dubbele aanpak demonstreert DevOps efficiëntie principes!
 </div>
 
-### Step 4: Stage and Commit Your Changes
-<div class="step-counter">4</div>
+### Stap 4: Stage en Commit Je Wijzigingen
+<div class=\"step-counter\">4</div>
 
-Now let's save your progress tracker updates to Git:
+Laten we nu je voortgangstracker updates opslaan in Git:
 
 ```bash
-# Check what files have changed
+# Controleer welke bestanden zijn gewijzigd
 git status
 
-# Add your progress tracker changes to staging
+# Voeg je voortgangstracker wijzigingen toe aan staging
 git add docs/progress.md
 
-# Commit with a descriptive message following conventional commits
-git commit -m "feat: personalize workshop progress"
+# Commit met een beschrijvend bericht volgens conventional commits
+git commit -m \"feat: personaliseer workshop voortgang\"
 ```
 
-<div class="warning-box">
-⚠️ <strong>Commit Message Format:</strong> The first line is a brief summary (50 chars max), followed by a blank line, then detailed explanation if needed.
+<div class=\"warning-box\">
+⚠️ <strong>Commit Message Formaat:</strong> De eerste regel is een korte samenvatting (max 50 karakters), gevolgd door een lege regel, dan gedetailleerde uitleg indien nodig.
 </div>
 
-### Step 5: Push Your Branch  
-<div class="step-counter">5</div>
+### Stap 5: Push Je Branch
+<div class=\"step-counter\">5</div>
 
-Upload your branch to GitHub:
+Upload je branch naar GitHub:
 
 ```bash
-# Push your feature branch to your fork
-git push origin feat/personalize-site
+# Push je feature branch naar je fork
+git push origin feat/personaliseer-site
 ```
 
-You should see output like:
+Je zou output moeten zien zoals:
 
 ```
 Enumerating objects: 5, done.
@@ -208,61 +208,61 @@ Delta compression using up to 4 threads
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 362 bytes | 181.00 KiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
-To https://github.com/YOUR_USERNAME/devops-workshop-vitepress.git
- * [new branch]      feat/personalize-site -> feat/personalize-site
+To https://github.com/JOUW_GEBRUIKERSNAAM/devops-workshop-vitepress.git
+ * [new branch]      feat/personaliseer-site -> feat/personaliseer-site
 ```
 
-### Step 6: Create a Pull Request
-<div class="step-counter">6</div>
+### Stap 6: Creëer een Pull Request
+<div class=\"step-counter\">6</div>
 
-Now let's propose your changes to the main repository:
+Laten we nu je wijzigingen voorstellen aan de main repository:
 
-1. **Go to the Pull Requests tab** of your forked repository on GitHub
-2. **Click "New Pull Request"**
-3. **Select your feature branch** (`feat/personalize-site`) as the compare branch
-4. **Add a title and description** for your Pull Request:
-   - **Title:** `feat: personalize workshop progress tracker`
-   - **Description:**
+1. **Ga naar het Pull Requests tabblad** van je geforkte repository op GitHub
+2. **Klik op \"New Pull Request\"**
+3. **Selecteer je feature branch** (`feat/personaliseer-site`) als de compare branch
+4. **Voeg een titel en beschrijving toe** voor je Pull Request:
+   - **Titel:** `feat: personaliseer workshop voortgangstracker`
+   - **Beschrijving:**
 
      ```markdown
-     # Personal Progress Tracker
+     # Persoonlijke Voortgangstracker
 
-     ## Changes Made
-     - Added personal information and learning goals
-     - Updated Phase 1 checklist with initial progress
-     - Documented first Git workflow experience
+     ## Gemaakte Wijzigingen
+     - Persoonlijke informatie en leerdoelen toegevoegd
+     - Fase 1 checklist bijgewerkt met initiële voortgang
+     - Eerste Git workflow ervaring gedocumenteerd
 
-     ## Purpose
-     This tracker is my first DevOps deliverable! It helps me and the instructors monitor my progress through the workshop phases.
+     ## Doel
+     Deze tracker is mijn eerste DevOps deliverable! Het helpt mij en de instructeurs mijn voortgang door de workshop fasen te monitoren.
      ```
 
-5. **Click "Create Pull Request"**
+5. **Klik op \"Create Pull Request\"**
 
-<div class="tip-box">
-💡 <strong>PR Description Tips:</strong> Use markdown for formatting, reference any related issues, and explain the "why" behind your changes.
+<div class=\"tip-box\">
+💡 <strong>PR Beschrijving Tips:</strong> Gebruik markdown voor opmaak, refereer gerelateerde issues, en leg de \"waarom\" achter je wijzigingen uit.
 </div>
 
-### Step 7: Code Review and Merge
-<div class="step-counter">7</div>
+### Stap 7: Code Review en Merge
+<div class=\"step-counter\">7</div>
 
-After creating the Pull Request:
-- Request reviews from instructors or peers
-- Respond to feedback and make changes if needed
-- Once approved, merge the Pull Request into the main branch
+Na het aanmaken van de Pull Request:
+- Vraag reviews aan van instructeurs of peers
+- Reageer op feedback en maak wijzigingen indien nodig
+- Zodra goedgekeurd, merge de Pull Request naar de main branch
 
-<div class="tip-box">
-💡 <strong>Code Review Best Practices:</strong> Review for clarity, maintainability, and adherence to project standards. Leave constructive feedback.
+<div class=\"tip-box\">
+💡 <strong>Code Review Best Practices:</strong> Review voor duidelijkheid, onderhoudbaarheid en naleving van project standaarden. Geef constructieve feedback.
 </div>
 
-## Validation & Next Steps
+## Validatie & Volgende Stappen
 
-### ✅ Success Criteria
+### ✅ Succescriteria
 
-You've successfully completed the Code phase if:
-- [x] You have a merged Pull Request in your repository
-- [x] **Your personalized progress tracker is visible** in the main branch
-- [x] You understand the Git workflow: branch → commit → push → PR → merge
-- [x] You can explain why this process promotes collaboration
-- [x] **Your progress tracker shows Phase 1 as completed** with personal notes
+Je hebt de Code fase succesvol voltooid als:
+- [x] Je hebt een gemergede Pull Request in je repository
+- [x] **Je gepersonaliseerde voortgangstracker is zichtbaar** in de main branch
+- [x] Je begrijpt de Git workflow: branch → commit → push → PR → merge
+- [x] Je kunt uitleggen waarom dit proces samenwerking bevordert
+- [x] **Je voortgangstracker toont Fase 1 als voltooid** met persoonlijke notities
 
-Continue to Phase 2: Build
+[Ga verder naar Fase 2: Build →](/phases/02-build)

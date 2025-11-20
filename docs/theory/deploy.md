@@ -1,33 +1,92 @@
-# Deploy Phase Theory
+# Deploy Fase Theorie
 
-## What is the Deploy Phase?
-Deployment publishes artifacts to production. For VitePress: Push dist/ to gh-pages branch → Live on GitHub Pages (https://username.github.io/repo/). In DevOps, embodies Automation (zero-touch via Actions) and Measurement (deploy success rates); integrates with sharing via live previews.
+## Wat is de Deploy Fase?
 
-## Why Deploy Phase?
-After Release versions the artifact, Deploy publishes it live—why? Makes validated/ versioned output accessible to users (e.g., site visitors). Why not just build? Artifacts need hosting; Pages auto-publishes for free. Rollbacks: Revert to prior artifact if issues arise (e.g., via tag ZIP). Analogy: Publishing a book after editing/printing—deploy is the "print run."
+De **Deploy Fase** publiceert je geteste artifact naar productie (live omgeving).
 
-## Key Concepts
-- **Continuous Deployment (CD)**: Auto after tests (trigger: main merge). Why continuous? Lean—frequent, small updates reduce risk.
-- **GitHub Pages**: Free hosting; source = gh-pages. Action: peaceiris/actions-gh-pages. Why Pages? Simple for static sites like ours.
-- **Security**: Use GITHUB_TOKEN (auto); no secrets needed for public. Why token? Secure automation (Automation).
-- **Rollbacks**: Revert commit or redeploy old dist/. Why? Ensures reliability—if deploy fails, restore from Release artifact.
+In deze workshop:
+- **Input**: Getest artifact
+- **Trigger**: Merge naar main branch
+- **Output**: Live website op GitHub Pages
+
+**Doel**: Maak je software toegankelijk voor gebruikers.
+
+**CALMS Verbinding**:
+- **Automatisering**: Deployment zonder handmatige stappen
+- **Lean**: Snelle feedback van echte gebruikers
+
+## Waarom Deployen?
+
+Zonder deployment:
+- 🚨 Software blijft op de plank liggen
+- 🚨 Geen gebruikersfeedback
+- 🚨 Waarde wordt niet gerealiseerd
+
+Met deployment:
+- ✅ Gebruikers krijgen nieuwe features direct
+- ✅ Snelle feedback loops
+- ✅ Waarde wordt snel geleverd
+
+**Analogie**: Deployment is zoals een product in de winkel zetten—het is gebouwd en getest, nu kunnen klanten het kopen.
+
+## Kernconcepten
+
+### 1. Continuous Deployment vs Delivery
+- **Continuous Delivery**: Code is altijd klaar om te deployen (handmatige trigger)
+- **Continuous Deployment**: Code wordt automatisch gedeployed bij elke merge
+
+**Workshop**: We implementeren Continuous Deployment!
+
+### 2. GitHub Pages
+- Gratis static site hosting
+- Automatisch HTTPS
+- Geïntegreerd met GitHub
+- Perfect voor VitePress
+
+### 3. Deployment Strategie
+- **Blue-Green**: Twee identieke omgevingen, switch tussen ze
+- **Canary**: Geleidelijke rollout naar subset van gebruikers
+- **Rolling**: Incrementele update van servers
+
+**Workshop**: Directe deployment (GitHub Pages handelt dit af)
+
+### 4. Rollback
+Als deployment faalt of bugs introduceert:
+- Revert de merge commit
+- Deploy vorige versie
+- Fix forward (nieuwe deployment met fix)
+
+## DevOps Maturity
+
+- **Level 1**: Handmatige FTP upload
+- **Level 2**: Script-based deployment
+- **Level 3**: Continuous deployment (workshop doel)
+- **Level 4**: Multi-region, zero-downtime deployments
+
+## Visualisatie
 
 ```mermaid
 graph TD
-  A[Passed Tests] --> B[Deploy Job: npx gh-pages -d dist/]
-  B --> C[gh-pages Branch Updated]
-  C --> D[Live Site: username.github.io/repo/]
-  D --> E[Rollback: Revert Merge]
+  A[Merge naar Main] --> B[Trigger Deploy Workflow]
+  B --> C[Build & Test Slagen?]
+  C -->|Ja| D[Deploy naar GitHub Pages]
+  C -->|Nee| E[Blokkeer Deployment]
+  D --> F[Live Site Bijgewerkt]
+  F --> G[Gebruikers Zien Wijzigingen]
 ```
 
-## Benefits
-Instant updates; feedback loops. Maturity: Level 5 = Multiple deploys/day (track via Actions metrics).
+## Q&A
 
-Hands-On: /hands-on/deploy.md – Add deploy job! Reflection: Deploy publishes artifact—full pipeline: Code→Build→Test→Release→Deploy.
-- Security: Use GITHUB_TOKEN for auth.
+**V: Wat als deployment faalt?**
+A: GitHub Pages toont de vorige versie. Fix de bug en deploy opnieuw.
 
-### Rollbacks
-- Revert commit or redeploy previous build.
-- For Pages: Push old dist/ or use releases.
+**V: Hoe snel is deployment?**
+A: Meestal 1-3 minuten na merge.
 
-**Hands-On**: In /hands-on/deploy.md, you'll add the deploy job to the pipeline.
+**V: Kunnen gebruikers downtime ervaren?**
+A: Nee, GitHub Pages doet atomic deployments (oude versie → nieuwe versie zonder tussenstap).
+
+## Hands-On
+Ga naar [Hands-on: Deploy](/hands-on/deploy) om je deployment pipeline te voltooien!
+
+**Reflectie**: Volledige CI/CD cyclus compleet: Code → Build → Test → Release → **Deploy** 🎉

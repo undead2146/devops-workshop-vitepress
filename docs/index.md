@@ -3,148 +3,149 @@ layout: home
 
 hero:
   name: "DevOps Workshop"
-  text: "Master CI/CD with GitHub Actions"
-  tagline: "Learn DevOps by building and deploying this very site!"
+  text: "Beheer CI/CD met GitHub Actions"
+  tagline: "Leer DevOps door deze website te bouwen en te deployen!"
   actions:
     - theme: brand
       text: Start Workshop
       link: #
     - theme: alt
-      text: View Progress Tracker
-      link: #
+      text: Bekijk Voortgangs Tracker
+      link: /progress
     - theme: alt
-      text: View on GitHub
+      text: Bekijk op GitHub
       link: https://github.com/undead2146/devops-workshop-vitepress
 
 features:
   - icon: 🔄
-    title: Complete CI/CD Pipeline
-    details: Build, test, release, and deploy automatically with GitHub Actions
+    title: Volledige CI/CD Pipeline
+    details: Bouw, test, release en deploy automatisch met GitHub Actions
   - icon: 📚
-    title: Learn by Doing
-    details: Edit this site to practice the Code phase while learning DevOps
+    title: Leren door te Doen
+    details: Bewerk deze site om de Code fase te oefenen terwijl je DevOps leert
   - icon: 🚀
-    title: Real-World Tools
-    details: Use professional tools like VitePress, Jest, and GitHub Pages
+    title: Professionele Tools
+    details: Gebruik professionele tools zoals VitePress, Jest en GitHub Pages
   - icon: 📊
-    title: Track Your Progress
-    details: Monitor your learning journey with the built-in progress tracker
+    title: Volg Je Voortgang
+    details: Monitor je leertraject met de ingebouwde voortgangstracker
 ---
 
 <div class="workshop-callout">
-  <div class="workshop-callout-title">🎯 Workshop Meta-Learning Approach</div>
-  <p><strong>This workshop site IS your DevOps project!</strong> Every edit you make practices the "Code" phase, and you'll see your changes go live through the complete CI/CD pipeline you'll build.</p>
+  <div class="workshop-callout-title">🎯 Workshop Meta-Leer Aanpak</div>
+  <p><strong>Deze workshop site IS jouw DevOps project!</strong> Elke bewerking die je maakt oefent de "Code" fase, en je ziet je wijzigingen live gaan via de volledige CI/CD pipeline die je gaat bouwen.</p>
 </div>
 
-## Workshop Overview: The CALMS Framework
+## Workshop Overzicht: Het CALMS Framework
 
-This interactive workshop teaches you DevOps through the **CALMS framework**:
+Deze interactieve workshop leert je DevOps via het **CALMS framework**:
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🤝 Culture</span>
-    <span class="workshop-status status-pending">Collaboration</span>
+    <span class="phase-title">🤝 Cultuur</span>
+    <span class="workshop-status status-pending">Samenwerking</span>
   </div>
-  <p>Learn collaborative development through Pull Requests and code reviews</p>
+  <p>Leer collaboratieve ontwikkeling via Pull Requests en code reviews</p>
 </div>
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🤖 Automation</span>
+    <span class="phase-title">🤖 Automatisering</span>
     <span class="workshop-status status-pending">CI/CD Pipeline</span>
   </div>
-  <p>Automate your entire development pipeline with GitHub Actions</p>
+  <p>Automatiseer je gehele ontwikkelpipeline met GitHub Actions</p>
 </div>
 
 <div class="phase-card">
   <div class="phase-header">
     <span class="phase-title">📈 Lean</span>
-    <span class="workshop-status status-pending">Efficiency</span>
+    <span class="workshop-status status-pending">Efficiëntie</span>
   </div>
-  <p>Optimize workflows for faster, more reliable deployments</p>
+  <p>Optimaliseer workflows voor snellere, betrouwbaardere deployments</p>
 </div>
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">📊 Measurement</span>
-    <span class="workshop-status status-pending">Metrics</span>
+    <span class="phase-title">📊 Meting</span>
+    <span class="workshop-status status-pending">Metrieken</span>
   </div>
-  <p>Track performance with test coverage and deployment metrics</p>
+  <p>Volg prestaties met testdekking en deployment metrieken</p>
 </div>
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🔄 Sharing</span>
-    <span class="workshop-status status-pending">Knowledge</span>
+    <span class="phase-title">🔄 Delen</span>
+    <span class="workshop-status status-pending">Kennis</span>
   </div>
-  <p>Share learnings through documentation and feedback loops</p>
+  <p>Deel leerpunten via documentatie en feedback loops</p>
 </div>
 
-## Your DevOps Learning Journey
+## Jouw DevOps Leertraject
 
-You'll build a complete CI/CD pipeline through 5 progressive phases:
+Je bouwt een volledige CI/CD pipeline via 5 progressieve fases:
 
 <div class="timeline">
   <div class="timeline-item">
-    <h3>Phase 1: Code</h3>
-    <p>Learn collaborative development with Git, branches, and Pull Requests. <strong>You'll start by editing your progress tracker!</strong></p>
+    <h3>Fase 1: Code</h3>
+    <p>Leer collaboratieve ontwikkeling met Git, branches en Pull Requests. <strong>Je begint met het bewerken van je voortgangstracker!</strong></p>
   </div>
   <div class="timeline-item">
-    <h3>Phase 2: Build</h3>
-    <p>Transform source code into deployable artifacts using automated builds</p>
+    <h3>Fase 2: Build</h3>
+    <p>Transformeer broncode naar deploybare artifacts met geautomatiseerde builds</p>
   </div>
   <div class="timeline-item">
-    <h3>Phase 3: Test</h3>
-    <p>Ensure quality with automated testing and coverage reporting</p>
+    <h3>Fase 3: Test</h3>
+    <p>Waarborg kwaliteit met geautomatiseerde testing en coverage rapportage</p>
   </div>
   <div class="timeline-item">
-    <h3>Phase 4: Release</h3>
-    <p>Create versioned releases with semantic versioning and changelogs</p>
+    <h3>Fase 4: Release</h3>
+    <p>Creëer versioned releases met semantic versioning en changelogs</p>
   </div>
   <div class="timeline-item">
-    <h3>Phase 5: Deploy</h3>
-    <p>Automatically deploy to production with rollback capabilities</p>
+    <h3>Fase 5: Deploy</h3>
+    <p>Automatisch deployen naar productie met rollback mogelijkheden</p>
   </div>
 </div>
 
-## Workshop Progress Tracking
+## Workshop Voortgang Volgen
 
 <div class="progress-tracker">
-  <h3>🎯 Your Personal Progress Tracker</h3>
-  <p>Throughout this workshop, you'll be editing and updating your personal progress tracker to practice the Code phase of DevOps.</p>
+  <h3>🎯 Jouw Persoonlijke Voortgangstracker</h3>
+  <p>Tijdens deze workshop bewerk en update je jouw persoonlijke voortgangstracker om de Code fase van DevOps te oefenen.</p>
   
-    <div class="tip-box">
-    💡 <strong>First Step:</strong> After setup, you'll personalize your Progress Tracker by adding your name, goals, and tracking your completion of each phase. This editing process teaches Git workflows!
+  <div class="tip-box">
+    💡 <strong>Eerste Stap:</strong> Na de setup personaliseer je jouw <a href="/progress">Voortgangstracker</a> door je naam, doelen toe te voegen en je voltooiing van elke fase bij te houden. Dit bewerkingsproces leert je Git workflows!
+  </div>
 </div>
 
-## What You'll Build
+## Wat Je Gaat Bouwen
 
-By the end of this workshop, you'll have:
+Aan het einde van deze workshop heb je:
 
-- ✅ **A fully automated CI/CD pipeline** running on GitHub Actions
-- ✅ **A live website** deployed to GitHub Pages (this very site, with your customizations!)
-- ✅ **Automated testing** with coverage reports ensuring quality
-- ✅ **Versioned releases** with downloadable artifacts for distribution
-- ✅ **Real DevOps experience** with professional industry tools
-- ✅ **A personalized progress tracker** documenting your DevOps journey
+- ✅ **Een volledig geautomatiseerde CI/CD pipeline** draaiend op GitHub Actions
+- ✅ **Een live website** gedeployed naar GitHub Pages (deze site, met jouw aanpassingen!)
+- ✅ **Geautomatiseerde testing** met coverage rapporten voor kwaliteitsborging
+- ✅ **Versioned releases** met downloadbare artifacts voor distributie
+- ✅ **Echte DevOps ervaring** met professionele industrie tools
+- ✅ **Een gepersonaliseerde voortgangstracker** die jouw DevOps reis documenteert
 
-## Ready to Transform Your Development Workflow?
+## Klaar om Je Development Workflow Te Transformeren?
 
 <div class="success-box">
-🚀 <strong>Let's Get Started!</strong> This workshop will transform how you think about software delivery. You'll experience the power of automation, collaboration, and continuous improvement firsthand.
+🚀 <strong>Laten We Beginnen!</strong> Deze workshop transformeert hoe je denkt over software levering. Je ervaart de kracht van automatisering, samenwerking en continue verbetering uit eerste hand.
 </div>
 
-### Next Steps:
+### Volgende Stappen:
 
-1. Complete Setup - Get your development environment ready (10 minutes)
-2. View Schedule - See the detailed 2-hour workshop timeline  
-3. Start Phase 1: Code - Begin your DevOps journey by editing your progress tracker!
+1. **[Voltooi Setup](/setup)** - Maak je ontwikkelomgeving klaar (10 minuten)
+2. **[Bekijk Schema](/schedule)** - Zie de gedetailleerde 2-uur workshop tijdlijn  
+3. **[Start Fase 1: Code](/phases/01-code)** - Begin je DevOps reis door je voortgangstracker te bewerken!
 
 <div class="workshop-callout">
-  <div class="workshop-callout-title">🎓 Learning Approach</div>
-  <p>This workshop follows a hands-on, learning-by-doing methodology. Every concept is immediately applied to this very website, giving you tangible results and real-world experience.</p>
+  <div class="workshop-callout-title">🎓 Leer Aanpak</div>
+  <p>Deze workshop volgt een hands-on, learning-by-doing methodologie. Elk concept wordt direct toegepast op deze website, wat je tastbare resultaten en real-world ervaring geeft.</p>
 </div>
 
 ---
 
-*Ready to master DevOps? Your journey to automated, reliable software delivery starts now!*
+*Klaar om DevOps te beheersen? Je reis naar geautomatiseerde, betrouwbare software levering begint nu!*

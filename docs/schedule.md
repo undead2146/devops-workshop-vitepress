@@ -1,186 +1,186 @@
-# Workshop Schedule
+# Workshop Schema
 
-**Total Duration:** 2 hours (120 minutes)  
-**Format:** Interactive hands-on workshop  
-**Participants:** 5-20 people
+**Totale Duur:** 2 uur (120 minuten)  
+**Format:** Interactieve hands-on workshop  
+**Deelnemers:** 5-20 personen
 
-## Timeline Overview
+## Tijdlijn Overzicht
 
 <div class="progress-bar">
   <div class="progress-fill" style="width: 0%"></div>
 </div>
 
-| Time | Duration | Activity | Presenter | Participants |
+| Tijd | Duur | Activiteit | Presentator | Deelnemers |
 |------|----------|----------|-----------|--------------|
-| 0:00-0:10 | 10 min | [Introduction & Setup](#introduction-setup) | P1 | Fork & clone |
-| 0:10-0:25 | 15 min | [Theory: DevOps & Code Phase](#theory-devops-code) | P1 | Read & note-take |
-| 0:25-0:40 | 15 min | [Hands-On: Code Phase](#hands-on-code) | P2 | Edit site & PR |
-| 0:40-0:55 | 15 min | [Theory & Hands-On: Build Phase](#build-phase) | P2 | Add CI workflow |
-| 0:55-1:05 | 10 min | **Break** | All | Stretch & Q&A |
-| 1:05-1:20 | 15 min | [Theory & Hands-On: Test Phase](#test-phase) | P2 | Add tests |
-| 1:20-1:35 | 15 min | [Theory & Hands-On: Release Phase](#release-phase) | P3 | Create releases |
-| 1:35-1:50 | 15 min | [Theory & Hands-On: Deploy Phase](#deploy-phase) | P3 | Deploy to Pages |
-| 1:50-2:00 | 10 min | [Wrap-up & Next Steps](#wrap-up) | All | Showcase & feedback |
+| 0:00-0:10 | 10 min | [Introductie & Setup](#introductie-setup) | P1 | Fork & clone |
+| 0:10-0:25 | 15 min | [Theorie: DevOps & Code Fase](#theorie-devops-code) | P1 | Lezen & notities maken |
+| 0:25-0:40 | 15 min | [Hands-On: Code Fase](#hands-on-code) | P2 | Site bewerken & PR |
+| 0:40-0:55 | 15 min | [Theorie & Hands-On: Build Fase](#build-fase) | P2 | CI workflow toevoegen |
+| 0:55-1:05 | 10 min | **Pauze** | Allen | Stretch & Q&A |
+| 1:05-1:20 | 15 min | [Theorie & Hands-On: Test Fase](#test-fase) | P2 | Tests toevoegen |
+| 1:20-1:35 | 15 min | [Theorie & Hands-On: Release Fase](#release-fase) | P3 | Releases creëren |
+| 1:35-1:50 | 15 min | [Theorie & Hands-On: Deploy Fase](#deploy-fase) | P3 | Deployen naar Pages |
+| 1:50-2:00 | 10 min | [Afsluiting & Vervolgstappen](#afsluiting) | Allen | Showcase & feedback |
 
-## Detailed Schedule
+## Gedetailleerd Schema
 
-### Introduction & Setup
-**Time:** 0:00-0:10 (10 minutes)  
-**Presenter:** P1  
-**Objective:** Get everyone set up and oriented
+### Introductie & Setup
+**Tijd:** 0:00-0:10 (10 minuten)  
+**Presentator:** P1  
+**Doel:** Iedereen laten setup voltooien en oriënteren
 
-#### Script for Presenter 1:
-> "Welcome to our DevOps workshop! Today you'll learn by building a real CI/CD pipeline. This very website will be your project - every edit you make practices DevOps principles. Let's start by getting everyone set up."
+#### Script voor Presentator 1:
+> "Welkom bij onze DevOps workshop! Vandaag leer je door een echte CI/CD pipeline te bouwen. Deze website wordt je project - elke bewerking die je maakt oefent DevOps principes. Laten we beginnen met iedereen setup te laten doen."
 
-#### Participant Activities:
-1. **Fork the repository** (2 min)
-   - Go to the workshop GitHub repository
-   - Click "Fork" button
-   - Keep default settings
+#### Deelnemer Activiteiten:
+1. **Fork de repository** (2 min)
+   - Ga naar de workshop GitHub repository
+   - Klik op "Fork" knop
+   - Behoud standaard instellingen
 
-2. **Clone locally** (3 min)
+2. **Clone lokaal** (3 min)
    ```bash
-   git clone https://github.com/YOUR_USERNAME/devops-workshop-vitepress.git
+   git clone https://github.com/JOUW_GEBRUIKERSNAAM/devops-workshop-vitepress.git
    cd devops-workshop-vitepress
    ```
 
-3. **Install and preview** (3 min)
+3. **Installeer en preview** (3 min)
    ```bash
    pnpm install
    pnpm dev
    ```
-   - Open localhost:5173
-   - Verify site loads
+   - Open http://localhost:5173
+   - Controleer of de site laadt
 
-4. **Enable GitHub Pages** (2 min)
-   - Go to Settings > Pages
+4. **Activeer GitHub Pages** (2 min)
+   - Ga naar Settings > Pages
    - Source: "Deploy from a branch"
-   - Branch: `gh-pages` (will be created later)
+   - Branch: `gh-pages` (wordt later aangemaakt)
 
-#### Success Criteria:
-- ✅ Everyone has the site running locally
-- ✅ GitHub Pages is configured
-- ✅ Poll: "Type ✅ in chat if you're ready"
+#### Succes Criteria:
+- ✅ Iedereen heeft de site lokaal draaien
+- ✅ GitHub Pages is geconfigureerd
+- ✅ Poll: "Typ ✅ in chat als je klaar bent"
 
 ---
 
-### Theory: DevOps & Code Phase
-**Time:** 0:10-0:25 (15 minutes)  
-**Presenter:** P1  
-**Objective:** Understand DevOps CALMS and Code phase fundamentals
+### Theorie: DevOps & Code Fase
+**Tijd:** 0:10-0:25 (15 minuten)  
+**Presentator:** P1  
+**Doel:** Begrijp DevOps CALMS en Code fase fundamenten
 
-#### Presenter Script:
-> "Now let's understand what DevOps really means. Open the Theory section in your local site and follow along."
+#### Presentator Script:
+> "Laten we nu begrijpen wat DevOps werkelijk betekent. Open de Theorie sectie in je lokale site en volg mee."
 
-#### Content to Cover:
+#### Te Behandelen Inhoud:
 1. **CALMS Framework** (5 min)
-   - Culture: Collaboration over silos
-   - Automation: Reduce manual work  
-   - Lean: Optimize flow and eliminate waste
-   - Measurement: Data-driven decisions
-   - Sharing: Knowledge and feedback loops
+   - Culture: Samenwerking boven silo's
+   - Automation: Verminderen handmatig werk  
+   - Lean: Optimaliseren flow en elimineren verspilling
+   - Measurement: Data-gedreven beslissingen
+   - Sharing: Kennis en feedback loops
 
-2. **Code Phase Deep Dive** (7 min)
-   - Why version control matters
+2. **Code Fase Diepgaand** (7 min)
+   - Waarom versiebeheer belangrijk is
    - Git workflow: branch → commit → PR → merge
-   - How this enables collaboration
-   - Connection to DevOps Culture & Sharing
+   - Hoe dit samenwerking mogelijk maakt
+   - Connectie met DevOps Culture & Sharing
 
 3. **Workshop Context** (3 min)
-   - How editing this site = practicing Code phase
-   - Preview of full pipeline we'll build
+   - Hoe het bewerken van deze site = oefenen Code fase
+   - Preview van volledige pipeline die we gaan bouwen
 
-#### Participant Activities:
-- Read `/theory/overview` and `/theory/cicd`
-- Take notes in the margins (edit locally)
-- Ask questions in chat
+#### Deelnemer Activiteiten:
+- Lees `/theory/overview` en `/theory/cicd`
+- Maak notities in de marges (bewerk lokaal)
+- Stel vragen in chat
 
 ---
 
-### Hands-On: Code Phase
-**Time:** 0:25-0:40 (15 minutes)  
-**Presenter:** P2  
-**Objective:** Practice collaborative development
+### Hands-On: Code Fase
+**Tijd:** 0:25-0:40 (15 minuten)  
+**Presentator:** P2  
+**Doel:** Oefen collaboratieve ontwikkeling
 
 <div class="warning-box">
-⚠️ <strong>Presenter Handoff:</strong> P1 says "P2, take us through the Code phase hands-on!"
+⚠️ <strong>Presentator Wissel:</strong> P1 zegt "P2, neem ons mee door de Code fase hands-on!"
 </div>
 
-#### Step-by-Step Instructions:
+#### Stap-voor-Stap Instructies:
 
-<div class="step-counter">1</div> **Create a feature branch** (2 min)
+<div class="step-counter">1</div> **Creëer een feature branch** (2 min)
 
 ```bash
-git checkout -b feat/personalize-site
+git checkout -b feat/personaliseer-site
 ```
 
-<div class="step-counter">2</div> **Make your first edit** (5 min)
+<div class="step-counter">2</div> **Maak je eerste bewerking** (5 min)
 
-Edit `docs/progress.md` and add your personal notes:
+Bewerk `docs/progress.md` en voeg je persoonlijke notities toe:
 
 ```markdown
-## My Workshop Notes
-- Started at: [current time]
-- Goal: Learn DevOps by doing
-- Expectation: Build a real pipeline
+## Mijn Workshop Notities
+- Gestart om: [huidige tijd]
+- Doel: Leer DevOps door te doen
+- Verwachting: Bouw een echte pipeline
 
-## Personal Tracker
-- [ ] Code phase completed
-- [ ] Build phase completed  
-- [ ] Test phase completed
-- [ ] Release phase completed
-- [ ] Deploy phase completed
+## Persoonlijke Tracker
+- [ ] Code fase voltooid
+- [ ] Build fase voltooid  
+- [ ] Test fase voltooid
+- [ ] Release fase voltooid
+- [ ] Deploy fase voltooid
 ```
 
-<div class="step-counter">3</div> **Commit and push** (3 min)
+<div class="step-counter">3</div> **Commit en push** (3 min)
 
 ```bash
 git add .
-git commit -m "feat: add personal workshop tracker"
-git push origin feat/personalize-site
+git commit -m "feat: voeg persoonlijke workshop tracker toe"
+git push origin feat/personaliseer-site
 ```
 
-<div class="step-counter">4</div> **Create Pull Request** (3 min)
+<div class="step-counter">4</div> **Creëer Pull Request** (3 min)
 
-1. Go to your GitHub repo
-2. Click "Compare & pull request"
-3. Title: "Add personal workshop tracker"
-4. Description: "Practicing the Code phase by adding my progress tracker"
-5. Click "Create pull request"
+1. Ga naar je GitHub repo
+2. Klik op "Compare & pull request"
+3. Titel: "Voeg persoonlijke workshop tracker toe"
+4. Beschrijving: "Oefening van de Code fase door mijn voortgangstracker toe te voegen"
+5. Klik op "Create pull request"
 
 <div class="step-counter">5</div> **Merge Pull Request** (2 min)
 
-1. Review the changes in the PR
-2. Click "Merge pull request"
-3. Click "Confirm merge"
-4. Delete the feature branch
+1. Review de wijzigingen in de PR
+2. Klik op "Merge pull request"
+3. Klik op "Confirm merge"
+4. Verwijder de feature branch
 
-#### Success Criteria:
-- ✅ PR created and merged successfully
-- ✅ Changes visible in main branch
-- ✅ Understanding of Git workflow
+#### Succes Criteria:
+- ✅ PR succesvol aangemaakt en gemerged
+- ✅ Wijzigingen zichtbaar in main branch
+- ✅ Begrip van Git workflow
 
 <div class="success-box">
-🎉 <strong>Phase Complete!</strong> You've just practiced the Code phase of DevOps - collaborative development through version control!
+🎉 <strong>Fase Voltooid!</strong> Je hebt zojuist de Code fase van DevOps geoefend - collaboratieve ontwikkeling via versiebeheer!
 </div>
 
 ---
 
-### Build Phase
-**Time:** 0:40-0:55 (15 minutes)  
-**Presenter:** P2  
-**Objective:** Automate artifact creation
+### Build Fase
+**Tijd:** 0:40-0:55 (15 minuten)  
+**Presentator:** P2  
+**Doel:** Automatiseer artifact creatie
 
-#### Theory Overview (5 min)
-- What are artifacts? (Compiled, production-ready files)
-- Why build? (Optimization, consistency, security)
-- VitePress: Markdown → Static HTML/CSS/JS
+#### Theorie Overzicht (5 min)
+- Wat zijn artifacts? (Gecompileerde, production-ready bestanden)
+- Waarom builden? (Optimalisatie, consistentie, beveiliging)
+- VitePress: Markdown → Statische HTML/CSS/JS
 
-#### Hands-On Implementation (10 min):
+#### Hands-On Implementatie (10 min):
 
-<div class="step-counter">1</div> **Create workflow file** (3 min)
+<div class="step-counter">1</div> **Creëer workflow bestand** (3 min)
 
-Create `.github/workflows/ci.yml`:
+Creëer `.github/workflows/ci.yml`:
 
 ```yaml
 name: CI Pipeline
@@ -210,319 +210,207 @@ jobs:
           path: .vitepress/dist/
 ```
 
-<div class="step-counter">2</div> **Test locally first** (2 min)
+<div class="step-counter">2</div> **Test eerst lokaal** (2 min)
 
 ```bash
 pnpm build
-ls -la .vitepress/dist/  # Should see HTML files
+ls -la .vitepress/dist/  # Zou HTML bestanden moeten zien
 ```
 
-<div class="step-counter">3</div> **Commit and push** (3 min)
+<div class="step-counter">3</div> **Commit en push** (3 min)
 
 ```bash
 git add .
-git commit -m "feat: add CI build pipeline"
+git commit -m "feat: voeg CI build pipeline toe"
 git push origin main
 ```
 
-<div class="step-counter">4</div> **Verify in GitHub Actions** (2 min)
+<div class="step-counter">4</div> **Verifieer in GitHub Actions** (2 min)
 
-1. Go to your repo's "Actions" tab
-2. Watch the build run
-3. Download the artifact when complete
+1. Ga naar de "Actions" tab van je repo
+2. Bekijk de build run
+3. Download het artifact wanneer voltooid
 
-#### Success Criteria:
-- ✅ Workflow runs successfully
-- ✅ Artifact contains built site files
-- ✅ Understanding of build automation
-
----
-
-### 10-Minute Break
-**Time:** 0:55-1:05  
-
-> "Great progress! Take a 10-minute break. When we return, we'll add testing to ensure our builds are high quality."
+#### Succes Criteria:
+- ✅ Workflow draait succesvol
+- ✅ Artifact bevat gebouwde site bestanden
+- ✅ Begrip van build automatisering
 
 ---
 
-### Test Phase  
-**Time:** 1:05-1:20 (15 minutes)  
-**Presenter:** P2  
-**Objective:** Add quality gates with automated testing
+### 10-Minuten Pauze
+**Tijd:** 0:55-1:05  
 
-#### Theory (3 min):
-- Why test? (Catch issues early, ensure quality)
+> "Geweldige voortgang! Neem een 10-minuten pauze. Wanneer we terugkomen, voegen we testing toe om te zorgen dat onze builds van hoge kwaliteit zijn."
+
+---
+
+### Test Fase  
+**Tijd:** 1:05-1:20 (15 minuten)  
+**Presentator:** P2  
+**Doel:** Voeg kwaliteitspoorten toe met geautomatiseerde testing
+
+#### Theorie (3 min):
+- Waarom testen? (Vang problemen vroeg, waarborg kwaliteit)
 - Types: Unit, Integration, E2E
-- Coverage: Measure how much code is tested
+- Coverage: Meet hoeveel code getest is
 
-#### Implementation (12 min):
+#### Implementatie (12 min):
 
-<div class="step-counter">1</div> **Create test file** (4 min)
+<div class="step-counter">1</div> **Creëer test bestand** (4 min)
 
-Create `tests/site.test.js`:
+Creëer `tests/site.test.js` (JavaScript code blijft Engels voor technische redenen)
 
-```javascript
-const fs = require('fs');
-const path = require('path');
+<div class="step-counter">2</div> **Voeg test configuratie toe** (2 min)
 
-describe('Workshop Site Content Validation', () => {
-  const docsDir = path.join(__dirname, '../docs');
-
-  // DevOps Quality Gate: Check for dead links in config.js (ensures navigation to existing docs before build/deploy)
-  test('Config.js links point to existing files (no dead links)', () => {
-    const configPath = path.join(docsDir, '.vitepress/config.js');
-    expect(fs.existsSync(configPath)).toBe(true);
-    
-    const configContent = fs.readFileSync(configPath, 'utf8');
-    
-    // Simple regex to extract unique link paths from nav and sidebar (e.g., '/theory/build')
-    const linkRegex = /link:\s*'([^']+)'/g;
-    let match;
-    const uniqueLinks = new Set();
-    
-    while ((match = linkRegex.exec(configContent)) !== null) {
-      const link = match[1];
-      if (link.startsWith('/') && !link.includes('http') && !uniqueLinks.has(link)) {
-        uniqueLinks.add(link);
-      }
-    }
-    
-    // For each link, check if corresponding .md file exists (VitePress convention)
-    uniqueLinks.forEach(link => {
-      const filePath = path.join(docsDir, link.replace(/^\//, '') + '.md');
-      // DevOps Focus: Fail fast if link broken—prevents deploy of invalid navigation (Lean: early detection)
-      expect(fs.existsSync(filePath)).toBe(true, `Dead link in config.js: ${link} (missing ${filePath})`);
-    });
-  });
-});
-```
-
-<div class="step-counter">2</div> **Add test configuration** (2 min)
-
-Create `jest.config.js`:
-
-```javascript
-module.exports = {
-  testEnvironment: 'node',
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov', 'html']
-};
-```
+Creëer `jest.config.js` (code blijft Engels)
 
 <div class="step-counter">3</div> **Update CI workflow** (3 min)
 
-Add test job to `.github/workflows/ci.yml`:
+Voeg test job toe aan `.github/workflows/ci.yml`
 
-```yaml
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test
-```
-
-<div class="step-counter">4</div> **Test and commit** (3 min)
+<div class="step-counter">4</div> **Test en commit** (3 min)
 
 ```bash
-pnpm test  # Run locally first
+pnpm test  # Draai eerst lokaal
 git add .
-git commit -m "feat: add automated testing"
+git commit -m "feat: voeg geautomatiseerde testing toe"
 git push origin main
 ```
 
-#### Success Criteria:
-- ✅ Tests pass locally and in CI
-- ✅ Coverage report generated
-- ✅ Build fails if tests fail
+#### Succes Criteria:
+- ✅ Tests slagen lokaal en in CI
+- ✅ Coverage rapport gegenereerd
+- ✅ Build faalt als tests falen
 
 ---
 
-### Release Phase
-**Time:** 1:20-1:35 (15 minutes)  
-**Presenter:** P3  
-**Objective:** Create versioned releases
+### Release Fase
+**Tijd:** 1:20-1:35 (15 minuten)  
+**Presentator:** P3  
+**Doel:** Creëer versioned releases
 
 <div class="warning-box">
-⚠️ <strong>Presenter Handoff:</strong> P2 says "P3, show them how to create professional releases!"
+⚠️ <strong>Presentator Wissel:</strong> P2 zegt "P3, laat ze zien hoe je professionele releases creëert!"
 </div>
 
-#### Theory (3 min):
+#### Theorie (3 min):
 - Semantic Versioning (MAJOR.MINOR.PATCH)
 - Releases vs Deployments
-- Why version? (Rollbacks, auditing, distribution)
+- Waarom versie? (Rollbacks, auditing, distributie)
 
-#### Implementation (12 min):
+#### Implementatie (12 min):
 
-<div class="step-counter">1</div> **Add release job to CI** (5 min)
+<div class="step-counter">1</div> **Voeg release job toe aan CI** (5 min)
 
-Update `.github/workflows/ci.yml`:
+Update `.github/workflows/ci.yml` (YAML code blijft Engels)
 
-```yaml
-  release:
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: [build, test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-```
-
-<div class="step-counter">2</div> **Create first release** (4 min)
+<div class="step-counter">2</div> **Creëer eerste release** (4 min)
 
 ```bash
 git add .
-git commit -m "feat: add release automation"
+git commit -m "feat: voeg release automatisering toe"
 git push origin main
 
-# Create and push tag
+# Creëer en push tag
 git tag v1.0.0
 git push origin v1.0.0
 ```
 
-<div class="step-counter">3</div> **Verify release** (3 min)
+<div class="step-counter">3</div> **Verifieer release** (3 min)
 
-1. Go to repo's "Releases" section
-2. See v1.0.0 release created automatically
+1. Ga naar de "Releases" sectie van je repo
+2. Zie v1.0.0 release automatisch aangemaakt
 3. Download release assets
 
-#### Success Criteria:
-- ✅ Release created automatically on tag
-- ✅ Release includes built artifacts
-- ✅ Understanding of versioning strategy
+#### Succes Criteria:
+- ✅ Release automatisch aangemaakt bij tag
+- ✅ Release bevat gebouwde artifacts
+- ✅ Begrip van versioning strategie
 
 ---
 
-### Deploy Phase
-**Time:** 1:35-1:50 (15 minutes)  
-**Presenter:** P3  
-**Objective:** Automatically deploy to production
+### Deploy Fase
+**Tijd:** 1:35-1:50 (15 minuten)  
+**Presentator:** P3  
+**Doel:** Automatisch deployen naar productie
 
-#### Theory (3 min):
+#### Theorie (3 min):
 - Continuous Deployment vs Delivery
-- GitHub Pages as production environment
-- Rollback strategies
+- GitHub Pages als productie omgeving
+- Rollback strategieën
 
-#### Implementation (12 min):
+#### Implementatie (12 min):
 
-<div class="step-counter">1</div> **Add deploy job** (6 min)
+<div class="step-counter">1</div> **Voeg deploy job toe** (6 min)
 
-Update `.github/workflows/ci.yml`:
+Update `.github/workflows/ci.yml` (YAML code blijft Engels)
 
-```yaml
-  deploy:
-    if: github.ref == 'refs/heads/main'
-    needs: [build, test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .vitepress/dist
-          cname: ${{ secrets.CNAME }}  // Optional custom domain
-```
-
-<div class="step-counter">2</div> **Deploy and test** (4 min)
+<div class="step-counter">2</div> **Deploy en test** (4 min)
 
 ```bash
 git add .
-git commit -m "feat: add automatic deployment"
+git commit -m "feat: voeg automatische deployment toe"
 git push origin main
 ```
 
-<div class="step-counter">3</div> **Verify deployment** (2 min)
+<div class="step-counter">3</div> **Verifieer deployment** (2 min)
 
-1. Wait for Actions to complete
-2. Visit `https://YOUR_USERNAME.github.io/devops-workshop-vitepress/`
-3. Confirm site is live!
+1. Wacht tot Actions voltooid zijn
+2. Bezoek `https://JOUW_GEBRUIKERSNAAM.github.io/devops-workshop-vitepress/`
+3. Bevestig dat site live is!
 
-#### Success Criteria:
-- ✅ Site deploys automatically on main branch changes
-- ✅ Live site accessible at GitHub Pages URL
-- ✅ Full CI/CD pipeline working end-to-end
+#### Succes Criteria:
+- ✅ Site deployt automatisch bij main branch wijzigingen
+- ✅ Live site toegankelijk op GitHub Pages URL
+- ✅ Volledige CI/CD pipeline werkt end-to-end
 
 <div class="success-box">
-🚀 <strong>Congratulations!</strong> You've built a complete CI/CD pipeline! Every change to main now automatically builds, tests, and deploys your site.
+🚀 <strong>Gefeliciteerd!</strong> Je hebt een complete CI/CD pipeline gebouwd! Elke wijziging naar main wordt nu automatisch gebouwd, getest en gedeployed.
 </div>
 
 ---
 
-### Wrap-up & Next Steps
-**Time:** 1:50-2:00 (10 minutes)  
-**All Presenters**
+### Afsluiting & Vervolgstappen
+**Tijd:** 1:50-2:00 (10 minuten)  
+**Alle Presentatoren**
 
-#### Showcase Time (5 min):
-- Volunteers share their live sites
-- Quick demo of making a change and seeing it deploy
-- Celebrate the working pipelines!
+#### Showcase Tijd (5 min):
+- Vrijwilligers delen hun live sites
+- Snelle demo van een wijziging maken en zien deployen
+- Vier de werkende pipelines!
 
-#### Key Takeaways (3 min):
-1. **Culture**: Collaboration through PRs and code review
-2. **Automation**: Full pipeline runs without manual intervention  
-3. **Lean**: Fast feedback loops and streamlined process
-4. **Measurement**: Test coverage and deployment metrics
-5. **Sharing**: Documentation and knowledge transfer
+#### Belangrijkste Leerpunten (3 min):
+1. **Cultuur**: Samenwerking via PRs en code review
+2. **Automatisering**: Volledige pipeline draait zonder handmatige interventie  
+3. **Lean**: Snelle feedback loops en gestroomlijnd proces
+4. **Meting**: Test coverage en deployment metrieken
+5. **Delen**: Documentatie en kennisoverdracht
 
-#### Next Steps (2 min):
-- Complete extensions for extra credit
-- Customize your site and add more features
-- Apply these concepts to your real projects
-- Provide feedback to improve the workshop
+#### Vervolgstappen (2 min):
+- Voltooi [extensions](/resources/extensions) voor extra punten
+- Personaliseer je site en voeg meer features toe
+- Pas deze concepten toe op je echte projecten
+- Geef [feedback](/resources/feedback) om de workshop te verbeteren
 
 ---
 
-## Presenter Notes
+## Presentator Notities
 
-### Preparation Checklist:
-- [ ] All presenters have demo repos ready
-- [ ] Backup slides prepared for any technical issues
-- [ ] Zoom breakout rooms configured (if virtual)
-- [ ] Participant GitHub usernames collected
-- [ ] Workshop repository forked by all facilitators
+### Voorbereiding Checklist:
+- [ ] Alle presentatoren hebben demo repos klaar
+- [ ] Backup slides voorbereid voor technische problemen
+- [ ] Zoom breakout rooms geconfigureerd (indien virtueel)
+- [ ] Deelnemer GitHub gebruikersnamen verzameld
+- [ ] Workshop repository geforked door alle facilitators
 
-### Troubleshooting Quick Reference:
-- **pnpm not found**: `npm install -g pnpm`
-- **Permission errors**: Use `sudo` or configure npm properly
-- **Actions failing**: Check YAML indentation and GitHub token permissions
-- **Site not deploying**: Verify Pages settings and branch name
+### Troubleshooting Snelle Referentie:
+- **pnpm niet gevonden**: `npm install -g pnpm`
+- **Permissie fouten**: Gebruik `sudo` of configureer npm correct
+- **Actions falen**: Controleer YAML indentatie en GitHub token permissies
+- **Site deployt niet**: Verifieer Pages instellingen en branch naam
 
-### Timing Flexibility:
-- If running behind: Skip some theory sections and focus on hands-on
-- If ahead of schedule: Add more Q&A and deeper exploration
-- Always keep the final deployment demo - it's the most satisfying part!
+### Timing Flexibiliteit:
+- Als je achterloopt: Sla sommige theorie secties over en focus op hands-on
+- Als je voorloopt: Voeg meer Q&A en diepere verkenning toe
+- Houd altijd de finale deployment demo - het is het meest bevredigende deel!

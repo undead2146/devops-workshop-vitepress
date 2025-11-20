@@ -1,80 +1,80 @@
-# Phase 2: Build - Automating Artifact Creation
+# Fase 2: Build - Geautomatiseerde Artifact Creatie
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🔨 Build Phase</span>
-    <span class="workshop-status status-progress">In Progress</span>
+    <span class="phase-title">🔨 Build Fase</span>
+    <span class="workshop-status status-progress">In Uitvoering</span>
   </div>
-  <p>Transform source code into deployable artifacts using automated builds</p>
+  <p>Transformeer broncode naar deploybare artifacts met geautomatiseerde builds</p>
 </div>
 
-## Learning Objectives
+## Leerdoelen
 
-By the end of this phase, you will:
-- ✅ Understand what build artifacts are
-- ✅ Create a GitHub Actions workflow for automated builds
-- ✅ Use pnpm for efficient dependency management
-- ✅ Verify build outputs and artifacts
+Aan het einde van deze fase zul je:
+- ✅ Begrijpen wat build artifacts zijn
+- ✅ Een GitHub Actions workflow aanmaken voor geautomatiseerde builds
+- ✅ pnpm gebruiken voor efficiënt dependency management
+- ✅ Build outputs en artifacts verifiëren
 
-## Theory: Why the Build Phase Matters
+## Theorie: Waarom de Build Fase Belangrijk Is
 
-### The Problem Without Automated Builds
-Without automation, building a project involves manual steps:
-- 🚨 Manual dependency installation on every machine
-- 🚨 Inconsistent builds across different environments
-- 🚨 No way to verify the build works before deployment
-- 🚨 Time-consuming and error-prone process
+### Het Probleem Zonder Geautomatiseerde Builds
+Zonder automatisering omvat het bouwen van een project handmatige stappen:
+- 🚨 Handmatige dependency installatie op elke machine
+- 🚨 Inconsistente builds over verschillende omgevingen
+- 🚨 Geen manier om te verifiëren dat de build werkt voor deployment
+- 🚨 Tijdrovend en foutgevoelig proces
 
-### The DevOps Solution: Automated Builds
+### De DevOps Oplossing: Geautomatiseerde Builds
 
-The Build phase supports **Automation** and **Lean** from the CALMS framework:
+De Build fase ondersteunt **Automatisering** en **Lean** uit het CALMS framework:
 
 ```mermaid
 graph TD
-  A[Source Code e.g., Markdown files] --> B[Install Dependencies pnpm install]
-  B --> C[Build Process pnpm build]
-  C --> D[Generate Artifact .vitepress/dist/]
-  D --> E[Upload for Verification]
-  E --> F[Test/Deploy Next Phases]
+  A[Broncode bijv. Markdown bestanden] --> B[Installeer Dependencies pnpm install]
+  B --> C[Build Proces pnpm build]
+  C --> D[Genereer Artifact .vitepress/dist/]
+  D --> E[Upload voor Verificatie]
+  E --> F[Test/Deploy Volgende Fasen]
 ```
 
-### Key Concepts
+### Kernconcepten
 
-#### 1. What Are Build Artifacts?
-A build artifact is the official, packaged output generated from your source code. It's the "thing" that you will test, release, and deploy.
-- **Source Code**: Human-readable files you edit (e.g., `docs/index.md`).
-- **Build Process**: An automated script (`pnpm build`) transforms that source code.
-- **Artifact**: The result is a self-contained, optimized package. In our case, it's the `.vitepress/dist/` directory, containing the final HTML, CSS, and JavaScript for our website.
+#### 1. Wat Zijn Build Artifacts?
+Een build artifact is de officiële, verpakte output gegenereerd uit je broncode. Het is het \"ding\" dat je zult testen, releasen en deployen.
+- **Broncode**: Mens-leesbare bestanden die je bewerkt (bijv. `docs/index.md`).
+- **Build Proces**: Een geautomatiseerd script (`pnpm build`) transformeert die broncode.
+- **Artifact**: Het resultaat is een zelfstandig, geoptimaliseerd pakket. In ons geval is het de `.vitepress/dist/` directory, met de definitieve HTML, CSS en JavaScript voor onze website.
 
-**Why Artifacts?**: Source code is for developers. Artifacts are for servers and users. They are consistent, secure (no source code exposed), and optimized for performance.
+**Waarom Artifacts?**: Broncode is voor developers. Artifacts zijn voor servers en gebruikers. Ze zijn consistent, veilig (geen broncode blootgesteld) en geoptimaliseerd voor prestaties.
 
 #### 2. pnpm vs npm
-- **pnpm**: Faster, more efficient package manager (3x faster installs)
-- **npm**: Traditional package manager (slower, more disk usage)
-- **Why pnpm?**: Uses content-addressable storage and symlinks for efficiency
+- **pnpm**: Snellere, efficiëntere package manager (3x snellere installaties)
+- **npm**: Traditionele package manager (langzamer, meer schijfgebruik)
+- **Waarom pnpm?**: Gebruikt content-addressable storage en symlinks voor efficiëntie
 
-#### 3. GitHub Actions for Builds
-GitHub Actions automates the build process:
-- **Triggers**: Runs on push to main or pull requests
-- **Environment**: Consistent Ubuntu runners
-- **Caching**: Speeds up repeated builds with pnpm cache
-- **Artifacts**: Uploads build outputs for download and verification
+#### 3. GitHub Actions voor Builds
+GitHub Actions automatiseert het build proces:
+- **Triggers**: Draait bij push naar main of pull requests
+- **Omgeving**: Consistente Ubuntu runners
+- **Caching**: Versnelt herhaalde builds met pnpm cache
+- **Artifacts**: Upload build outputs voor download en verificatie
 
-## Hands-On Practice
+## Hands-On Oefening
 
-### Step 1: Create the Build Workflow
-<div class="step-counter">1</div>
+### Stap 1: Creëer de Build Workflow
+<div class=\"step-counter\">1</div>
 
-Create the GitHub Actions workflow file to automate your build:
+Maak het GitHub Actions workflow bestand om je build te automatiseren:
 
-1. **Create the workflow directory and file**
+1. **Creëer de workflow directory en bestand**
 
    ```bash
    mkdir -p .github/workflows
    touch .github/workflows/ci.yml
    ```
 
-2. **Add the build workflow content**
+2. **Voeg de build workflow content toe**
 
    ```yaml
    name: CI/CD Pipeline
@@ -115,28 +115,143 @@ Create the GitHub Actions workflow file to automate your build:
              path: .vitepress/dist/
    ```
 
-   **Why this workflow?**
-   - **Checkout**: Gets your code from GitHub
-   - **pnpm setup**: Installs pnpm for fast dependency management
-   - **Node setup**: Installs Node.js with pnpm cache for speed
-   - **Install**: Uses frozen lockfile for consistent dependencies
-   - **Build**: Runs `pnpm build` to generate the static site
-   - **Upload**: Saves the built files as downloadable artifacts
+   **Waarom deze workflow?**
+   - **Checkout**: Haalt je code op van GitHub
+   - **pnpm setup**: Installeert pnpm voor snel dependency management
+   - **Node setup**: Installeert Node.js met pnpm cache voor snelheid
+   - **Install**: Gebruikt frozen lockfile voor consistente dependencies
+   - **Build**: Draait `pnpm build` om de statische site te genereren
+   - **Upload**: Slaat de gebouwde bestanden op als downloadbare artifacts
 
-### Step 2: Test the Build Locally
-<div class="step-counter">2</div>
+### Stap 2: Test de Build Lokaal
+<div class=\"step-counter\">2</div>
 
-Before pushing to GitHub, test the build process locally:
+Voordat je naar GitHub pusht, test het build proces lokaal:
 
 ```bash
-# Ensure you're in the project root
+# Zorg ervoor dat je in de project root bent
 cd devops-workshop-vitepress
 
-# Install dependencies (if not already done)
+# Installeer dependencies (indien niet al gedaan)
 pnpm install
 
-# Run the build command
+# Draai het build commando
 pnpm build
 ```
 
-**Expected output:**
+**Verwachte output:**
+```
+vitepress v1.x.x
+✓ building client + server bundles...
+✓ rendering pages...
+build complete in X.XXs.
+```
+
+**Verifieer de build artifact:**
+```bash
+# Controleer dat de dist directory bestaat
+ls -la .vitepress/dist/
+
+# Je zou moeten zien:
+# - index.html
+# - assets/ (CSS & JS)
+# - setup.html, phases/, etc.
+```
+
+<div class=\"tip-box\">
+💡 <strong>Lokaal Testen Eerst:</strong> Test altijd lokaal voordat je pusht. Dit bespaart tijd en voorkomt onnodige CI runs.
+</div>
+
+### Stap 3: Commit en Push de Workflow
+<div class=\"step-counter\">3</div>
+
+Nu de workflow klaar is, laten we het in versiebeheer plaatsen:
+
+```bash
+# Maak een nieuwe feature branch
+git checkout -b feat/add-build-workflow
+
+# Voeg de workflow toe
+git add .github/workflows/ci.yml
+
+# Commit met een beschrijvend bericht
+git commit -m \"feat: voeg geautomatiseerde build workflow toe
+
+- Configureert GitHub Actions voor CI/CD
+- Installeert dependencies met pnpm
+- Bouwt VitePress site
+- Upload artifacts voor verificatie\"
+
+# Push naar je fork
+git push origin feat/add-build-workflow
+```
+
+### Stap 4: Creëer Pull Request en Monitor de Build
+<div class=\"step-counter\">4</div>
+
+1. **Ga naar je repository op GitHub**
+2. **Klik op \"Compare & pull request\"**
+3. **Voeg een beschrijvende titel en omschrijving toe:**
+   - **Titel**: `feat: voeg geautomatiseerde build workflow toe`
+   - **Omschrijving**: Leg uit wat de workflow doet en waarom het belangrijk is
+
+4. **Creëer de PR en monitor de Actions tab**
+   - Het Actions tabblad toont je running workflow
+   - Klik erop om de live logs te zien
+   - Wacht tot alle checks groen zijn ✅
+
+<div class=\"success-box\">
+🎉 <strong>Eerste Geautomatiseerde Build!</strong> Je ziet nu je code automatisch bouwen in de cloud!
+</div>
+
+### Stap 5: Download en Verifieer het Artifact
+<div class=\"step-counter\">5</div>
+
+Eenmaal de workflow voltooid is:
+
+1. **Ga naar het Actions tabblad**
+2. **Klik op je laatste workflow run**
+3. **Scroll naar beneden naar \"Artifacts\"**
+4. **Download `workshop-site.zip`**
+5. **Pak het uit en open `index.html` in een browser**
+
+**Jij zou je gebouwde website moeten zien!** Dit is precies wat later gedeployed zal worden.
+
+<div class=\"tip-box\">
+💡 <strong>Artifact Verificatie:</strong> Het downloaden en inspecteren van artifacts helpt je begrijpen wat er precies gedeployed wordt.
+</div>
+
+## Validatie & Volgende Stappen
+
+### ✅ Succescriteria
+
+Je hebt de Build fase succesvol voltooid als:
+- [x] Je GitHub Actions workflow draait succesvol
+- [x] De build slaagt zonder errors
+- [x] Je kunt het artifact downloaden
+- [x] Het artifact bevat een werkende statische website
+- [x] Je begrijpt waarom geautomatiseerde builds belangrijk zijn voor DevOps
+
+### 🔍 Wat We Hebben Bereikt
+
+**CALMS Framework Verbindingen:**
+- **Automatisering**: Build proces draait automatisch bij elke push
+- **Lean**: Consistente, herhaalbare builds zonder handmatig werk
+- **Meting**: Kan zien of builds slagen of falen via Actions logs
+
+**Technische Wins:**
+- ✅ Consistente builds op elk platform (Ubuntu runner)
+- ✅ Caching voor snellere builds
+- ✅ Artifact opslag voor verificatie en deployment
+- ✅ Zichtbaarheid in build status via GitHub UI
+
+### 🚀 Volgende Fase
+
+Nu je een werkend build proces hebt, is het tijd om **kwaliteitsborging** toe te voegen!
+
+[Ga verder naar Fase 3: Test →](/phases/03-test)
+
+<div class=\"workshop-callout\">
+  <div class=\"workshop-callout-title\">💡 Reflectie Moment</div>
+  <p>Denk na over hoe geautomatiseerde builds jouw development workflow verbeteren. Geen meer \"het werkt op mijn machine\" problemen—de build is consistent en betrouwbaar!</p>
+</div>

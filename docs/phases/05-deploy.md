@@ -1,59 +1,75 @@
-# Phase 5: Deploy - Production Automation
+# Fase 5: Deploy - Productie Automatisering
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🚀 Deploy Phase</span>
-    <span class="workshop-status status-progress">Final Phase</span>
+    <span class="phase-title">🚀 Deploy Fase</span>
+    <span class="workshop-status status-progress">Finale Fase</span>
   </div>
-  <p>Automatically deploy to production with GitHub Pages</p>
+  <p>Automatisch deployen naar productie met GitHub Pages</p>
 </div>
 
-## Learning Objectives
+## Leerdoelen
 
-By the end of this phase, you will:
-- ✅ Implement automatic deployment to GitHub Pages
-- ✅ Understand continuous deployment principles
-- ✅ Experience the complete CI/CD pipeline
-- ✅ Complete your DevOps workshop journey
-- ✅ Finalize your progress tracker as a DevOps achievement
+Aan het einde van deze fase zul je:
+- ✅ Automatische deployment naar GitHub Pages implementeren
+- ✅ Continuous deployment principes begrijpen
+- ✅ De complete CI/CD pipeline ervaren
+- ✅ Je DevOps workshop reis voltooien
+- ✅ Je voortgangstracker finaliseren als een DevOps prestatie
 
-## Theory: Why the Deploy Phase Matters
+## Theorie: Waarom de Deploy Fase Belangrijk Is
 
-### The Problem Without Automated Deployment
-Manual deployment processes are error-prone and slow:
-- 🚨 Manual steps lead to inconsistent deployments
-- 🚨 Deployment becomes a bottleneck in the development process
-- 🚨 Risk of human error in production releases
-- 🚨 No automatic rollback capabilities
+### Het Probleem Zonder Geautomatiseerde Deployment
+Handmatige deployment processen zijn foutgevoelig en traag:
+- 🚨 Handmatige stappen leiden tot inconsistente deployments
+- 🚨 Deployment wordt een bottleneck in het ontwikkelproces
+- 🚨 Risico op menselijke fouten in productie releases
+- 🚨 Geen automatische rollback mogelijkheden
 
-### The DevOps Solution: Continuous Deployment
+### De DevOps Oplossing: Continuous Deployment
 
-The Deploy phase embodies **Automation** and **Lean** from the CALMS framework:
+De Deploy fase belichaamt **Automatisering** en **Lean** uit het CALMS framework:
 
 ```mermaid
 graph TD
-  A[Code Merged to Main] --> B[Build Pipeline]
-  B --> C[Run Tests] 
-  C --> D{Tests Pass?}
-  D -->|Yes| E[Deploy to Production]
-  D -->|No| F[Block Deployment]
-  E --> G[Live Site Updated]
-  F --> H[Fix Issues & Retry]
+  A[Code Gemerged naar Main] --> B[Build Pipeline]
+  B --> C[Draai Tests]
+  C --> D{Tests Slagen?}
+  D -->|Ja| E[Deploy naar Productie]
+  D -->|Nee| F[Blokkeer Deployment]
+  E --> G[Live Site Bijgewerkt]
+  F --> H[Los Problemen Op & Probeer Opnieuw]
 ```
 
-## Hands-On Practice: Complete Your CI/CD Pipeline
+### Kernconcepten
 
-### Step 1: Add Deploy Job to Workflow
+#### 1. Continuous Deployment vs Continuous Delivery
+- **Continuous Delivery**: Code is altijd klaar om te deployen (handmatige trigger)
+- **Continuous Deployment**: Code wordt automatisch gedeployed bij elke merge naar main
+- **Deze Workshop**: We implementeren Continuous Deployment!
+
+#### 2. GitHub Pages
+- **Gratis hosting**: Voor statische websites direct vanuit je repository
+- **Automatisch HTTPS**: Veilige verbindingen out-of-the-box
+- **Custom domains**: Optioneel je eigen domeinnaam gebruiken
+- **Perfect voor VitePress**: Geoptimaliseerd voor statische sites
+
+## Hands-On Oefening: Voltooi Je CI/CD Pipeline
+
+### Stap 1: Voeg Deploy Job Toe aan Workflow
 <div class="step-counter">1</div>
 
-Add the deploy job to your `.github/workflows/ci.yml`:
+Voeg de deploy job toe aan je `.github/workflows/ci.yml`:
 
 ```yaml
-# Add this job after your existing jobs
+# Voeg deze job toe na je bestaande jobs
 deploy:
   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
   needs: [build, test]
   runs-on: ubuntu-latest
+  
+  permissions:
+    contents: write
   
   steps:
     - name: Checkout code
@@ -81,159 +97,200 @@ deploy:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: .vitepress/dist
-        cname: # Optional: add custom domain
 ```
 
-### Step 2: Test the Full Pipeline
+**Wat doet deze workflow?**
+- **Trigger**: Draait alleen bij pushes naar main branch
+- **Dependencies**: Wacht tot build en test slagen
+- **Permissions**: Geeft write toegang voor deployment
+- **Deploy**: Pusht gebouwde site naar gh-pages branch
+
+### Stap 2: Test de Volledige Pipeline
 <div class="step-counter">2</div>
 
-Let's test your complete CI/CD pipeline:
+Laten we je complete CI/CD pipeline testen:
 
 ```bash
-# Create a branch for final updates
+# Creëer een branch voor finale updates
 git checkout -b feat/complete-pipeline
 
-# Add the deploy job
+# Voeg de deploy job toe
 git add .github/workflows/ci.yml
 
-# Update your progress tracker to show completion
-# Edit docs/progress.md and mark Phase 5 as complete
+# Update je voortgangstracker om voltooiing te tonen
+# Bewerk docs/progress.md en markeer Fase 5 als compleet
 
-# Commit all changes
-git commit -m "feat: complete CI/CD pipeline with deployment
+# Commit alle wijzigingen
+git commit -m "feat: voltooi CI/CD pipeline met deployment
 
-- Added automated deployment to GitHub Pages
-- Updated progress tracker with Phase 5 completion
-- Ready for full pipeline test"
+- Voeg geautomatiseerde deployment toe naar GitHub Pages
+- Update voortgangstracker met Fase 5 voltooiing
+- Klaar voor volledige pipeline test"
 
-# Push and create PR
+# Push en creëer PR
 git push origin feat/complete-pipeline
 ```
 
-### Step 3: Merge and Watch the Magic
+### Stap 3: Merge en Bekijk de Magie
 <div class="step-counter">3</div>
 
-1. **Create and merge your PR** to main
-2. **Watch GitHub Actions** run the complete pipeline:
+1. **Creëer en merge je PR** naar main
+2. **Bekijk GitHub Actions** de complete pipeline draaien:
    - Build ✅
-   - Test ✅  
+   - Test ✅
    - Deploy ✅
-3. **Visit your live site**: `https://[your-username].github.io/devops-workshop-vitepress/`
+3. **Bezoek je live site**: `https://[jouw-gebruikersnaam].github.io/devops-workshop-vitepress/`
 
 <div class="success-box">
-🎉 <strong>DevOps Magic Moment:</strong> Your changes are now automatically live! Every future edit to main will build, test, and deploy automatically.
+🎉 <strong>DevOps Magisch Moment:</strong> Je wijzigingen zijn nu automatisch live! Elke toekomstige edit naar main zal automatisch bouwen, testen en deployen.
 </div>
 
-### Step 4: Celebrate and Document Your Achievement
+### Stap 4: Vier en Documenteer Je Prestatie
 <div class="step-counter">4</div>
 
-Update your progress tracker one final time:
+Update je voortgangstracker een laatste keer:
 
 ```markdown
-### Phase 5: Deploy - Production Automation 🚀
+### Fase 5: Deploy - Productie Automatisering 🚀
 
-**Completion Checklist:**
-- [x] Added deploy job to CI workflow
-- [x] Successfully deployed site to GitHub Pages
-- [x] Verified live site at: https://[my-username].github.io/devops-workshop-vitepress/
-- [x] Made a change and watched it deploy automatically
-- [x] Completed the full CI/CD pipeline from code to production
+**Voltooiing Checklist:**
+- [x] Deploy job toegevoegd aan CI workflow
+- [x] Succesvol site gedeployed naar GitHub Pages
+- [x] Live site geverifieerd op: https://[mijn-gebruikersnaam].github.io/devops-workshop-vitepress/
+- [x] Een wijziging gemaakt en het automatisch zien deployen
+- [x] De volledige CI/CD pipeline voltooid van code tot productie
 
-**My Deploy Phase Notes:**
+**Mijn Deploy Fase Notities:**
 ```
-The complete DevOps transformation!
-- Automated deployment eliminates manual errors
-- Continuous delivery provides immediate user value  
-- The full pipeline gives confidence in every change
-- DevOps transforms how we deliver software
-```
-
-**Timestamp Completed:** [Current date/time]
-
-## Final Workshop Reflection
-
-### Overall Learning Summary
-```
-1. Biggest DevOps insight I gained:
-   The power of automation to eliminate manual toil and enable faster, more reliable delivery
-
-2. Most challenging part of the workshop:
-   [Your experience - maybe understanding Git workflows or debugging pipeline issues]
-
-3. How this changes my approach to software development:
-   I now see the value of investing time in automation to save time later
-
-4. What I want to implement at work/in personal projects:
-   Automated testing and deployment pipelines for all my projects
-
-5. Rating (1-10) and why:
-   9/10 - Hands-on approach made DevOps concepts concrete and actionable
-```
+De complete DevOps transformatie!
+- Geautomatiseerde deployment elimineert handmatige fouten
+- Continuous delivery biedt onmiddellijke gebruikerswaarde
+- De volledige pipeline geeft vertrouwen in elke wijziging
+- DevOps transformeert hoe we software leveren
 ```
 
-## Complete CI/CD Pipeline Achievement 🏆
+**Tijdstempel Voltooid:** [Huidige datum/tijd]
+```
 
-**Final Site URL:** https://[your-username].github.io/devops-workshop-vitepress/
-**Repository URL:** https://github.com/[your-username]/devops-workshop-vitepress  
-**Completion Date:** [Today's date]
+## Eindreflectie Workshop
 
-## What You've Accomplished
+### Algemene Leersamenvatting
+```
+1. Grootste DevOps inzicht dat ik heb verkregen:
+   De kracht van automatisering om handmatig werk te elimineren en snellere, 
+   betrouwbaardere levering mogelijk te maken
+
+2. Meest uitdagende deel van de workshop:
+   [Jouw ervaring - misschien Git workflows begrijpen of pipeline issues debuggen]
+
+3. Hoe dit mijn aanpak van softwareontwikkeling verandert:
+   Ik zie nu de waarde van tijd investeren in automatisering om later tijd te besparen
+
+4. Wat ik wil implementeren op het werk/in persoonlijke projecten:
+   Geautomatiseerde testing en deployment pipelines voor al mijn projecten
+
+5. Beoordeling (1-10) en waarom:
+   9/10 - Hands-on aanpak maakte DevOps concepten concreet en actionable
+```
+
+## Complete CI/CD Pipeline Prestatie 🏆
+
+**Definitieve Site URL:** `https://[jouw-gebruikersnaam].github.io/devops-workshop-vitepress/`  
+**Repository URL:** `https://github.com/[jouw-gebruikersnaam]/devops-workshop-vitepress`  
+**Voltooiingsdatum:** [Vandaag's datum]
+
+## Wat Je Hebt Bereikt
 
 <div class="timeline">
   <div class="timeline-item">
-    <h3>✅ Code Phase</h3>
-    <p>Mastered Git workflows, branching, and Pull Requests</p>
+    <h3>✅ Code Fase</h3>
+    <p>Git workflows, branching en Pull Requests gemeesterd</p>
   </div>
   <div class="timeline-item">
-    <h3>✅ Build Phase</h3>
-    <p>Automated artifact creation with GitHub Actions</p>
+    <h3>✅ Build Fase</h3>
+    <p>Artifact creatie geautomatiseerd met GitHub Actions</p>
   </div>
   <div class="timeline-item">
-    <h3>✅ Test Phase</h3>
-    <p>Implemented quality gates with automated testing</p>
+    <h3>✅ Test Fase</h3>
+    <p>Quality gates geïmplementeerd met geautomatiseerde testing</p>
   </div>
   <div class="timeline-item">
-    <h3>✅ Release Phase</h3>
-    <p>Created versioned distributions with semantic versioning</p>
+    <h3>✅ Release Fase</h3>
+    <p>Versioned distributies aangemaakt met semantic versioning</p>
   </div>
   <div class="timeline-item">
-    <h3>✅ Deploy Phase</h3>
-    <p>Achieved continuous deployment to production</p>
+    <h3>✅ Deploy Fase</h3>
+    <p>Continuous deployment naar productie bereikt</p>
   </div>
 </div>
 
-## Your DevOps Transformation
+## Jouw DevOps Transformatie
 
-You've experienced the complete **CALMS** framework:
+Je hebt het complete **CALMS** framework ervaren:
 
-- **Culture**: Collaborative development through PRs and code review
-- **Automation**: Full pipeline from code commit to production deployment
-- **Lean**: Eliminated manual deployment toil and accelerated feedback  
-- **Measurement**: Test coverage metrics and pipeline success tracking
-- **Sharing**: Documentation and knowledge transfer through your progress tracker
+- **Cultuur**: Collaboratieve ontwikkeling via PRs en code review
+- **Automatisering**: Volledige pipeline van code commit tot productie deployment
+- **Lean**: Handmatig deployment werk geëlimineerd en feedback versneld
+- **Meting**: Test coverage metrieken en pipeline success tracking
+- **Delen**: Documentatie en kennisoverdracht via je voortgangstracker
 
-## Next Steps: Continue Your DevOps Journey
+## Volgende Stappen: Ga Verder Met Je DevOps Reis
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🚀 Beyond the Workshop</span>
-    <span class="workshop-status status-complete">Ready to Scale</span>
+    <span class="phase-title">🚀 Voorbij de Workshop</span>
+    <span class="workshop-status status-complete">Klaar om te Schalen</span>
   </div>
-  <p>Take your new DevOps skills to the next level</p>
+  <p>Breng je nieuwe DevOps vaardigheden naar het volgende niveau</p>
 </div>
 
-1. **Explore Extensions** - Add advanced features to your pipeline
-2. **Share Your Achievement** - Add your site URL to the workshop chat
-3. **Provide Feedback** - Help improve this workshop for others
-4. **Apply to Real Projects** - Implement CI/CD in your work or personal projects
+1. **[Verken Uitbreidingen](/resources/extensions)** - Voeg geavanceerde features toe aan je pipeline
+2. **[Deel Je Prestatie](#)** - Voeg je site URL toe aan de workshop chat
+3. **[Geef Feedback](/resources/feedback)** - Help deze workshop te verbeteren voor anderen
+4. **Pas Toe op Echte Projecten** - Implementeer CI/CD in je werk of persoonlijke projecten
+
+### 🎓 Geavanceerde DevOps Topics om Te Verkennen
+
+- **Monitoring & Observability**: Voeg logging en metrics toe
+- **Infrastructure as Code**: Terraform, Ansible
+- **Container Orchestration**: Docker, Kubernetes
+- **Security Scanning**: SAST, DAST, dependency scanning
+- **Multi-environment Deployments**: Staging, production
+- **Feature Flags**: Gradual rollouts en A/B testing
 
 <div class="workshop-callout">
-  <div class="workshop-callout-title">🎓 DevOps Certified!</div>
-  <p>You've completed a full DevOps transformation journey. You understand not just the tools, but the culture and practices that make DevOps successful. Your live site and automated pipeline are proof of your new capabilities!</p>
+  <div class="workshop-callout-title">🎓 DevOps Gecertificeerd!</div>
+  <p>Je hebt een volledige DevOps transformatie reis voltooid. Je begrijpt niet alleen de tools, maar ook de cultuur en praktijken die DevOps succesvol maken. Je live site en geautomatiseerde pipeline zijn bewijs van je nieuwe capaciteiten!</p>
 </div>
 
-**Congratulations! You're now a DevOps practitioner with real-world experience.**
+**Gefeliciteerd! Je bent nu een DevOps practitioner met real-world ervaring.**
 
 ---
 
-*Your DevOps journey continues. Keep building, keep automating, keep improving!*
+## 💡 Belangrijkste Leerpunten
+
+### De DevOps Mindset
+- **Automatiseer Alles**: Als je het meer dan twee keer doet, automatiseer het
+- **Fail Fast**: Vroege feedback is goedkoper dan late bugs
+- **Continuous Improvement**: DevOps is een reis, geen bestemming
+- **Collaboration Over Silos**: Dev en Ops werken samen, niet apart
+
+### Technische Vaardigheden Verworven
+- ✅ Git workflows en branching strategieën
+- ✅ GitHub Actions CI/CD pipelines
+- ✅ Geautomatiseerde testing met Jest
+- ✅ Semantic versioning en release management
+- ✅ Continuous deployment naar productie
+- ✅ Infrastructure automation (GitHub Pages)
+
+### Soft Skills Ontwikkeld
+- ✅ Code review en collaboration
+- ✅ Documentatie en kennisdeling
+- ✅ Problem-solving en debugging
+- ✅ Process thinking en optimization
+
+---
+
+*Je DevOps reis gaat door. Blijf bouwen, blijf automatiseren, blijf verbeteren!*
+
+**🚀 Succes met je toekomstige DevOps avonturen!**

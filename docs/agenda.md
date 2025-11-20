@@ -1,27 +1,224 @@
-# Workshop Agenda (120 Minutes)
+# Workshop Agenda (120 Minuten)
 
-Follow this site—edit notes/PR for live updates. 3 presenters rotate: P1 (Intro/Code/Build), P2 (Test/Release), P3 (Deploy/CI/CD/Wrap). Buffers: 10 min total. Ties to full DevOps (CALMS) via GitHub Actions automation. Basics: Each phase builds on prior—Code (edits) → Build (artifact: compiled files) → Test (validate artifact) → Release (version artifact) → Deploy (publish artifact).
+Volg deze site - bewerk notities en maak Pull Requests voor live updates. De workshop heeft 3 presentatoren die roteren: P1 (Intro/Code/Build), P2 (Test/Release), P3 (Deploy/CI/CD/Afsluiting). Er zijn in totaal 10 minuten buffers ingebouwd. Deze workshop verbindt volledig DevOps (CALMS framework) via GitHub Actions automatisering.
 
-- **0:00–0:10: Intro & Setup (P1)**  
-  Welcome/objectives [](/; CALMS overview; explain artifact: Compiled output for consistency]. Fork/clone/preview. Poll: "Setup done?" Handoff: P2 preps test demo. Reflection: Setup enables Code phase.
+## Basisconcepten
 
-- **0:10–0:30: Theory – Code & Build (P1, 20 min)**  
-  Read theory/code & theory/build (Culture/Automation via Actions; why build artifact? Transforms source to production-ready files). Q&A: Git workflows. Verify: Local edit reloads. Buffer: 2 min. Reflection: Code starts pipeline; Build creates artifact—next, test it.
+Elke fase bouwt voort op de vorige:
+- **Code** (bewerkingen) → **Build** (artifact: gecompileerde bestanden) 
+- **Build** → **Test** (valideer artifact) 
+- **Test** → **Release** (versioneer artifact) 
+- **Release** → **Deploy** (publiceer artifact)
 
-- **0:30–0:50: Hands-On – Code & Build (P2, 20 min)**  
-  Follow hands-on/code-build (edit/PR/build YAML with Actions; why artifact? Ensures deployable format). Checkpoint: Green Actions; artifact download. Simulation: Lint fail. Handoff: P3 for release. Reflection: You've coded and built an artifact—next, test validates it before release.
+**Belangrijke termen:**
+- **Artifact**: Gecompileerde output voor consistentie en productie-gereedheid
+- **Tag**: Versie marker voor belangrijke milestones (niet bij elke build)
 
-- **0:50–1:10: Theory – Test & Release (P2, 20 min)**  
-  Explore theory/test & theory/release (Measurement/Lean via Jest/tags in Actions; why tag? Versions artifact for milestones, not every build—to track changes safely). Q&A: Why separate release/deploy? Verify: `pnpm test` passes. Buffer: 2 min. Reflection: Test checks artifact quality; Release versions it—next, hands-on applies.
+---
 
-- **1:10–1:30: Hands-On – Test & Release (P3, 20 min)**  
-  Per hands-on/test-release (add test/tag v1.0 with Actions; why not release every build? Tags for audits/sharing without clutter). Share ZIP. Simulation: Test fail/fix. Reflection: Tested/ versioned artifact—next, deploy publishes it live.
+## 📅 Tijdlijn
 
-- **1:30–1:50: Theory – Deploy & CI/CD (P3, 20 min)**  
-  Review theory/deploy & theory/cicd (Automation/Sharing via Pages/full pipeline; why deploy? Makes artifact accessible online). Discuss CALMS. Verify: Manual deploy. Reflection: Full flow: Code→Build (artifact)→Test→Release (version)→Deploy (live).
+### 0:00–0:10: Introductie & Setup (P1)
 
-- **1:50–2:10: Hands-On Deploy & Wrap (All, 20 min)**  
-  hands-on/deploy (add deploy job; full run with Actions; recap: Deploys artifact—why tag separately? For rollback/milestones). Edit progress & resources/feedback. Shares/Q&A (5 min). Homework: resources/extensions. Certificates: Add to site! Reflection: Pipeline complete—from code to live site.
+**Doel**: Welkom en iedereen klaar maken
 
-**My Notes** (Edit/PR):  
-- [Time]: Key takeaway from Code phase.
+**Activiteiten**:
+- Welkom en workshop doelstellingen uitleggen
+- CALMS framework overzicht
+- Uitleg wat een artifact is (gecompileerde output voor consistentie)
+- Deelnemers: Fork/clone/preview de repository
+- Poll: "Setup klaar?"
+- Handoff: P2 bereidt test demo voor
+
+**Reflectie**: Setup maakt de Code fase mogelijk
+
+**Buffertijd**: Inbegrepen in 10 minuten
+
+---
+
+### 0:10–0:30: Theorie – Code & Build (P1, 20 min)
+
+**Doel**: Begrijp DevOps cultuur en automatisering fundamenten
+
+**Te Lezen**:
+- [Code Fase Theorie](/theory/code) - Culture/Samenwerking via Git
+- [Build Fase Theorie](/theory/build) - Automation/Artifacts via Actions
+
+**Kernconcepten**:
+- Waarom build artefacten? Transforms bron naar productie-klare bestanden
+- Git workflows en branching strategieën
+- Automatisering met GitHub Actions
+
+**Activiteiten**:
+- Deelnemers lezen theorie secties
+- Q&A over Git workflows
+- Verificatie: Lokale edit reloads in browser
+
+**Reflectie**: Code start de pipeline; Build creëert artifact - volgende stap is testen
+
+**Bufferijd**: 2 minuten
+
+---
+
+### 0:30–0:50: Hands-On – Code & Build (P2, 20 min)
+
+**Doel**: Praktijk met Git workflows en build automatisering
+
+**Gids**: Volg [Code & Build Hands-on](/hands-on/code-build)
+
+**Stappen**:
+1. Bewerk bestanden (oefen Code fase)
+2. Maak Pull Request
+3. Voeg build YAML toe met Actions
+4. Waarom artifact? Verzekert deploybare format
+
+**Checkpoint**:
+- Groene Actions status
+- Artifact succesvol gedownload
+- Simulatie: Wat gebeurt er bij een lint fail?
+
+**Handoff**: P3 bereidt release voor
+
+**Reflectie**: Je hebt gecodeerd en een artifact gebouwd - volgende stap is testen om het te valideren voor release
+
+**Bufferijd**: Inbegrepen
+
+---
+
+### 0:50–1:10: Theorie – Test & Release (P2, 20 min)
+
+**Doel**: Begrijp kwaliteitsborging en versiebeheer
+
+**Te Lezen**:
+- [Test Fase Theorie](/theory/test) - Measurement/Lean via Jest
+- [Release Fase Theorie](/theory/release) - Tags in Actions
+
+**Kernconcepten**:
+- Waarom testen? Valideer artifact kwaliteit
+- Waarom taggen? Versioneer artefact voor milestones, niet elke build - voor veilige tracking van wijzigingen
+- Verschil tussen release en deploy
+
+**Activiteiten**:
+- Lees theorie secties
+- Q&A: "Waarom release en deploy scheiden?"
+- Verificatie: `pnpm test` slaagt lokaal
+
+**Reflectie**: Test checkt artifact kwaliteit; Release versioneert het - volgende stap is hands-on toepassing
+
+**Bufferijd**: 2 minuten
+
+---
+
+### 1:10–1:30: Hands-On – Test & Release (P3, 20 min)
+
+**Doel**: Implementeer testing en creëer eerste release
+
+**Gids**: Volg [Test & Release Hands-on](/hands-on/test-release)
+
+**Stappen**:
+1. Voeg tests toe
+2. Tag v1.0.0 met Actions
+3. Waarom niet bij elke build releasen? Tags voor audits/delen zonder rommel
+4. Deel ZIP met anderen
+
+**Activiteiten**:
+- Tests lokaal schrijven en runnen
+- Tag aanmaken en pushen
+- Release assets downloaden
+- Simulatie: Test fail/fix cyclus
+
+**Reflectie**: Geteste en versioneerde artifact - volgende stap is deployen om het live te publiceren
+
+**Bufferijd**: Inbegrepen
+
+---
+
+### 1:30–1:50: Theorie – Deploy & CI/CD (P3, 20 min)
+
+**Doel**: Begrijp deployment en de volledige pipeline
+
+**Te Lezen**:
+- [Deploy Fase Theorie](/theory/deploy) - Automation/Sharing via Pages
+- [CI/CD Overzicht](/theory/cicd) - Volledige pipeline
+
+**Kernconcepten**:
+- Waarom deployen? Maakt artifact online toegankelijk
+- Continuous Deployment vs Continuous Delivery
+- CALMS framework in actie
+- Volledige flow: Code → Build (artifact) → Test → Release (versie) → Deploy (live)
+
+**Activiteiten**:
+- Bespreek CALMS principes
+- Verificatie: Handmatige deploy test
+- Q&A over deployment strategieën
+
+**Reflectie**: Volledige DevOps flow begrijpen van code tot live site
+
+**Bufferijd**: Inbegrepen in presentatie
+
+---
+
+### 1:50–2:10: Hands-On Deploy & Afsluiting (Alle Presentatoren, 20 min)
+
+**Doel**: Volledige pipeline voltooien en reflecteren
+
+**Gids**: Volg [Deploy Hands-on](/hands-on/deploy)
+
+**Stappen**:
+1. Voeg deploy job toe
+2. Volledige run met Actions
+3. Recap: Deployt artifact - waarom apart taggen? Voor rollback/milestones
+
+**Afsluitende Activiteiten**:
+- Bewerk [Voortgangstracker](/progress)
+- Voeg [Feedback](/resources/feedback) toe
+- Deelnemers delen hun live sites (5 min)
+- Q&A sessie
+
+**Vervolgstappen**:
+- Huiswerk: [Workshop Uitbreidingen](/resources/extensions)
+- Optioneel: Voeg certificaten toe aan je site!
+
+**Reflectie**: Pipeline compleet - van code tot live site. Je hebt nu een werkende CI/CD pipeline!
+
+**Bufferijd**: 10 minuten flex voor vragen
+
+---
+
+## 📝 Mijn Persoonlijke Notities
+
+**Bewerk en commit deze sectie tijdens de workshop!**
+
+### Code Fase
+- **Tijd**: [Vul in]
+- **Belangrijkste inzicht**: 
+
+### Build Fase
+- **Tijd**: [Vul in]
+- **Belangrijkste inzicht**: 
+
+### Test Fase
+- **Tijd**: [Vul in]
+- **Belangrijkste inzicht**: 
+
+### Release Fase
+- **Tijd**: [Vul in]
+- **Belangrijkste inzicht**: 
+
+### Deploy Fase
+- **Tijd**: [Vul in]
+- **Belangrijkste inzicht**: 
+
+---
+
+## 🎯 Succesindicatoren
+
+Aan het einde van deze workshop heb je:
+- ✅ Een werkende CI/CD pipeline met alle 5 fasen
+- ✅ Een live gedeployde website op GitHub Pages
+- ✅ Praktische ervaring met Git workflows
+- ✅ Begrip van het CALMS framework
+- ✅ Geautomatiseerde testing en quality gates
+- ✅ Versioned releases met semantic versioning
+
+**Volgende stappen**: [Workshop Schema](/schedule) voor gedetailleerde timing en presentator scripts.

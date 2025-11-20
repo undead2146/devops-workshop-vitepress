@@ -1,36 +1,82 @@
-# Build Phase Theory
+# Build Fase Theorie
 
-## What is the Build Phase?
-Build transforms source into deployable artifacts. For VitePress: `pnpm build` generates static site (.vitepress/dist/: HTML/CSS/JS from Markdown). Automates compilation—key for reproducibility. In DevOps, supports Automation (pipelines) and Lean (fast builds); GitHub Actions handles caching for efficiency.
+## Wat is de Build Fase?
 
-## Why Build Phase?
-Source code (e.g., Markdown) is human-readable but not optimized for production. The Build phase creates a deployable **artifact**—a packaged, compiled, and optimized version of your application.
+De **Build Fase** transformeert mens-leesbare broncode (uit de Code fase) naar machine-klare **artifacts**.
 
-Think of an artifact as a ready-to-serve meal, whereas source code is just the raw ingredients. You can't serve ingredients to a customer; you must first cook and prepare them. Similarly, we build artifacts to create a consistent, fast, and secure version of our site for users. The artifact is what gets tested, versioned, and deployed.
+In deze workshop:
+- **Input**: Markdown bestanden (`.md`), configuratie, afbeeldingen
+- **Proces**: VitePress compiler (draait via Node.js)
+- **Output**: Statische HTML/CSS/JS bestanden in `.vitepress/dist/`
 
-## Key Concepts
-- **pnpm Advantages**: Parallel installs, symlinks (3x faster than npm); lockfile ensures consistency (`--frozen-lockfile` in CI). Why lockfile? Prevents version mismatches (Measurement).
-- **What is an Artifact?**: An artifact is the output of the build process. For this VitePress workshop, the artifact is the `.vitepress/dist/` directory. This folder contains all the static HTML, CSS, and JavaScript files that make up your live website. It's a self-contained, portable package that can be deployed to any web server.
-- **VitePress Specifics**: Bundles assets, optimizes (chunking); pitfalls: Missing deps (check pnpm-lock.yaml), large files (Vite config: build.rollupOptions). Why optimize? Lean—reduces load times.
+**Doel**: Creëer een consistent, deploybaar pakket dat onafhankelijk is van de omgeving van de ontwikkelaar.
+
+**CALMS Verbinding**:
+- **Automatisering**: Scripts bouwen de site
+- **Lean**: Elimineert handmatige compilatie stappen
+
+## Waarom Builden?
+
+Waarom niet gewoon de broncode deployen?
+1. **Prestaties**: Builds optimaliseren assets (minificatie, compressie)
+2. **Consistentie**: Een build werkt overal hetzelfde (geen "werkt op mijn machine")
+3. **Validatie**: Het build proces vangt syntax fouten en gebroken referenties
+
+**Analogie**:
+- **Code**: Het recept en de ingrediënten
+- **Build**: Het koken van de maaltijd
+- **Artifact**: Het geserveerde gerecht (klaar voor consumptie)
+
+## Kernconcepten
+
+### 1. Artifacts
+Een **artifact** is de onveranderlijke output van een build.
+- **Eigenschappen**: Versioned, zelfstandig, deploybaar
+- **In onze workshop**: De `.vitepress/dist/` map (gezipt voor releases)
+
+**Waarom belangrijk?** We testen en deployen *het artifact*, niet de broncode. Dit garandeert dat wat we testen exact hetzelfde is als wat live gaat.
+
+### 2. Dependency Management
+- **pnpm**: Onze package manager
+- **Lockfile** (`pnpm-lock.yaml`): Garandeert exacte versies van dependencies
+- **CI Install**: `pnpm install --frozen-lockfile` (strikt, geen updates toegestaan)
+
+**Waarom frozen lockfile?** Voorkomt dat builds breken omdat een dependency stiekem is geüpdatet.
+
+### 3. Build Automatisering
+GitHub Actions voert de build uit in een schone omgeving (Ubuntu container).
+- **Stappen**: Checkout → Setup Node/pnpm → Install → Build → Upload Artifact
+
+### 4. Caching
+Dependencies downloaden kost tijd. Caching bewaart ze tussen builds om tijd te besparen (Lean).
+
+## DevOps Maturity
+
+- **Level 1**: Handmatig bouwen en uploaden via FTP
+- **Level 2**: Build scripts lokaal draaien
+- **Level 3**: Geautomatiseerde CI builds (workshop doel)
+- **Level 4**: Geoptimaliseerde builds met caching en parallelisatie
+
+## Visualisatie
 
 ```mermaid
 graph TD
-  A[Source Code e.g., docs/] --> B[pnpm install --frozen-lockfile]
-  B --> C[pnpm build VitePress]
-  C --> D[Artifact: .vitepress/dist/ HTML/JS/CSS]
-  D --> E[Test/Deploy]
+  A[Broncode .md] --> B[CI: pnpm install]
+  B --> C[CI: pnpm build]
+  C --> D[Compileren & Optimaliseren]
+  D --> E[Artifact .vitepress/dist/]
+  E --> F[Upload voor Test/Deploy]
 ```
 
-## Benefits & Maturity
-Catches compile errors early; metrics: Build time <2 min. Level 2: Scripted builds; Level 3: Cached deps (Actions speeds this).
+## Q&A
 
-**Pitfalls**: Invalid config.js → Fail; fix locally first. Why? Ensures artifact is valid before pipeline (Lean).
+**V: Waarom bouwen we bij elke push?**
+A: Om direct te weten of onze wijzigingen de build breken (Continuous Integration).
 
-Hands-On: /hands-on/code-build.md – Add build job to YAML! Reflection: Build creates artifact from code—next, test checks it.
+**V: Wat als de build faalt?**
+A: De pipeline stopt direct. Geen kapotte code naar productie (Lean/Quality Gate).
 
-### Artifacts
-- For VitePress: `.vitepress/dist/` contains static files (HTML, CSS, JS).
-- Uploaded as artifacts in CI for inspection or manual download.
-- Pitfalls: Missing deps (check pnpm-lock.yaml), large bundles (optimize with Vite's chunking).
+## Hands-On
+Ga naar [Hands-on: Code & Build](/hands-on/code-build) om je build pipeline te maken!
 
-**Hands-On Tie-In**: In /hands-on/code-build.md, you'll create a workflow that builds and uploads this artifact.
+**Reflectie**: We hebben nu een artifact. Maar werkt het ook zoals bedoeld? Volgende stap: **Testen**.

@@ -1,22 +1,53 @@
 # Hands-On: Code & Build (20 Min)
 
-Implement Code (edits/PR) and Build (YAML/artifact). Verify at each step. Reflection: Code creates source; Build transforms it into an **artifact** (the compiled, deployable website) — why? To prepare it for testing, release, and deployment.
+Implementeer Code (bewerkingen/PR) en Build (YAML/artifact). Verifieer bij elke stap.
 
-## Step 1: Code Phase (5–7 min)
-Practice collaboration—edit site!
-1. Branch: `git checkout -b feat-code`. Why branch? Safe changes without affecting main.
-2. Edit e.g., /index.md: Add row to tracker "| Code | ✅ | PR created | [date] |". Why edit? Simulates real code changes.
-3. Lint: `pnpm lint` (if ESLint: `pnpm add -D eslint-plugin-markdown`). Why lint? Catches errors early (Measurement).
-4. Commit/Push: `git add . && git commit -m "feat: update tracker" && git push origin feat-code`. Why commit? Versions your code.
-5. PR: GitHub > Create PR to main > Merge (squash for clean history). Why PR? Reviews ensure quality (Culture).
-**Expected**: PR shows diff; merge succeeds. **Verify**: Refresh Pages—edits live? (If not, check Settings > Pages.) Reflection: Code phase done—your edits are versioned; next, Build creates an artifact from them.
+**Reflectie**: Code creëert broncode; Build transformeert het naar een **artifact** (de gecompileerde, deploybare website)—waarom? Om het voor te bereiden op testen, release en deployment.
 
-**Simulation**: Add invalid Markdown → PR lint fails → Fix. Why? Teaches error catching before build.
+## Stap 1: Code Fase (5–7 min)
 
-## Step 2: Build Phase (10–13 min)
-Automate artifact creation.
-1. New branch: `git checkout -b feat-build`. Why new? Builds on Code without mixing.
-2. Create `.github/workflows/ci-cd.yml` (copy-paste; customize if needed):
+Oefen samenwerking—bewerk de site!
+
+1. **Branch**: `git checkout -b feat-code`
+   - Waarom branchen? Veilige wijzigingen zonder main te beïnvloeden.
+
+2. **Bewerk** bijv. `/progress.md`: Voeg een rij toe aan je tracker
+   ```markdown
+   - [x] Code fase voltooid
+   - [x] PR aangemaakt op [datum]
+   ```
+   - Waarom bewerken? Simuleert echte code wijzigingen.
+
+3. **Lint** (optioneel): `pnpm lint`
+   - Waarom linten? Vangt fouten vroeg (Meting principe).
+
+4. **Commit/Push**:
+   ```bash
+   git add .
+   git commit -m "feat: update voortgangstracker"
+   git push origin feat-code
+   ```
+   - Waarom committen? Versioneert je code.
+
+5. **PR**: GitHub → Create PR naar main → Merge (squash voor schone geschiedenis)
+   - Waarom PR? Reviews zorgen voor kwaliteit (Cultuur principe).
+
+**Verwacht**: PR toont diff; merge slaagt.
+
+**Verifieer**: Refresh je lokale site—bewerkingen zichtbaar?
+
+**Reflectie**: Code fase klaar—je bewerkingen zijn geversioneerd; volgende stap: Build creëert een artifact.
+
+**Simulatie**: Voeg ongeldige Markdown toe → PR lint faalt → Fix. Waarom? Leert fout detectie voor build.
+
+## Stap 2: Build Fase (10–13 min)
+
+Automatiseer artifact creatie.
+
+1. **Nieuwe branch**: `git checkout -b feat-build`
+   - Waarom nieuw? Bouwt voort op Code zonder te mengen.
+
+2. **Creëer** `.github/workflows/ci.yml`:
 
    ```yaml
    name: CI/CD Pipeline
@@ -46,17 +77,31 @@ Automate artifact creation.
              path: .vitepress/dist/
    ```
 
-   Why YAML? Defines pipeline (Automation); why upload artifact? Shares compiled files for review (Sharing).
-3. Create `scripts/build.sh`: 
+   - Waarom YAML? Definieert pipeline (Automatisering)
+   - Waarom artifact uploaden? Deelt gecompileerde bestanden voor review (Delen principe)
+
+3. **Test lokaal**:
    ```bash
-   #!/bin/bash
    pnpm build
-   echo "Build complete: $(ls -la .vitepress/dist/)"
+   ls -la .vitepress/dist/
    ```
-   Make executable: `chmod +x scripts/build.sh`. Why script? Reusable for local/CI.
-4. Commit/Push/PR/Merge: `git add . && git commit -m "feat: add build job" && git push && PR/merge`.
-**Expected**: Actions tab > Green build; "Upload workshop-site" step. **Verify**: Download artifact > Unzip > Open index.html (site works offline). Reflection: Built artifact from code—why upload? Enables testing without local build every time; next, test validates it.
+   - Waarom lokaal? Vangt problemen voor CI.
 
-**Troubleshoot**: Build fail? Check logs for dep errors; run local `pnpm build`. Why local? Catches issues before CI.
+4. **Commit/Push/PR/Merge**:
+   ```bash
+   git add .
+   git commit -m "feat: voeg build workflow toe"
+   git push origin feat-build
+   ```
 
-Next: /hands-on/test-release.md (add test/release). Reflection: Code→Build: Source to artifact—now ensure it's quality-tested.
+**Verwacht**: Actions tab → Groene build; "Upload workshop-site" stap.
+
+**Verifieer**: Download artifact → Unzip → Open index.html (site werkt offline).
+
+**Reflectie**: Gebouwd artifact van code—waarom uploaden? Maakt testen mogelijk zonder elke keer lokaal te bouwen; volgende stap: test valideert het.
+
+**Troubleshoot**: Build faalt? Check logs voor dependency fouten; draai lokaal `pnpm build`.
+
+**Volgende**: [Test & Release](/hands-on/test-release)
+
+**Reflectie**: Code→Build: Bron naar artifact—nu zorgen dat het kwaliteit-getest is.

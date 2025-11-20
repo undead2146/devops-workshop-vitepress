@@ -1,112 +1,112 @@
-# Phase 3: Test - Ensuring Quality with Automated Testing
+# Fase 3: Test - Kwaliteitsborging met Geautomatiseerde Testing
 
 <div class="phase-card">
   <div class="phase-header">
-    <span class="phase-title">🧪 Test Phase</span>
-    <span class="workshop-status status-progress">In Progress</span>
+    <span class="phase-title">🧪 Test Fase</span>
+    <span class="workshop-status status-progress">In Uitvoering</span>
   </div>
-  <p>Ensure quality with automated testing and coverage reporting</p>
+  <p>Waarborg kwaliteit met geautomatiseerde testing en coverage rapportage</p>
 </div>
 
-## Learning Objectives
+## Leerdoelen
 
-By the end of this phase, you will:
-- ✅ Understand different types of tests (unit, integration, E2E)
-- ✅ Create automated tests for your workshop site
-- ✅ Configure Jest for testing Markdown content
-- ✅ Integrate tests into your CI/CD pipeline
-- ✅ Understand test coverage and quality gates
+Aan het einde van deze fase zul je:
+- ✅ Verschillende soorten tests begrijpen (unit, integration, E2E)
+- ✅ Geautomatiseerde tests aanmaken voor je workshop site
+- ✅ Jest configureren voor het testen van Markdown content
+- ✅ Tests integreren in je CI/CD pipeline
+- ✅ Test coverage en quality gates begrijpen
 
-## Theory: Why the Test Phase Matters
+## Theorie: Waarom de Test Fase Belangrijk Is
 
-### The Problem Without Automated Testing
-Without tests, software quality is hard to maintain:
-- 🚨 Bugs can slip into production unnoticed
-- 🚨 No confidence that changes don't break existing functionality
-- 🚨 Manual testing is time-consuming and inconsistent
-- 🚨 Refactoring becomes risky without safety nets
+### Het Probleem Zonder Geautomatiseerde Testing
+Zonder tests is softwarekwaliteit moeilijk te handhaven:
+- 🚨 Bugs kunnen onopgemerkt in productie terechtkomen
+- 🚨 Geen vertrouwen dat wijzigingen bestaande functionaliteit niet breken
+- 🚨 Handmatig testen is tijdrovend en inconsistent
+- 🚨 Refactoring wordt risicovol zonder vangnet
 
-### The DevOps Solution: Automated Testing
+### De DevOps Oplossing: Geautomatiseerde Testing
 
-The Test phase enables **Measurement** and **Lean** from the CALMS framework:
+De Test fase maakt **Meting** en **Lean** mogelijk uit het CALMS framework:
 
 ```mermaid
 graph TD
-  A[Code Changes] --> B[Run Automated Tests]
-  B --> C[Unit Tests Individual Functions]
-  C --> D[Integration Tests Component Interactions]
-  D --> E[End-to-End Tests Full Flows]
-  E --> F[Generate Coverage Report]
-  F --> G[Quality Gates Pass/Fail]
-  G -->|Pass| H[Proceed to Deploy]
-  G -->|Fail| I[Fix Issues First]
+  A[Code Wijzigingen] --> B[Draai Geautomatiseerde Tests]
+  B --> C[Unit Tests Individuele Functies]
+  C --> D[Integration Tests Component Interacties]
+  D --> E[End-to-End Tests Volledige Flows]
+  E --> F[Genereer Coverage Rapport]
+  F --> G[Quality Gates Slagen/Falen]
+  G -->|Slaagt| H[Ga Door naar Deploy]
+  G -->|Faalt| I[Los Problemen Eerst Op]
 ```
 
-### Key Concepts
+### Kernconcepten
 
-#### 1. Types of Tests
-- **Unit Tests**: Test individual pieces of code in isolation
-  - Fast and focused
-  - Test small, specific functionality
-  - Example: Does this function return the expected value?
+#### 1. Soorten Tests
+- **Unit Tests**: Test individuele stukjes code in isolatie
+  - Snel en gefocust
+  - Test kleine, specifieke functionaliteit
+  - Voorbeeld: Geeft deze functie de verwachte waarde terug?
 
-- **Integration Tests**: Test how components work together
-  - Verify interactions between modules
-  - Slower than unit tests
-  - Example: Does the build process generate correct files?
+- **Integration Tests**: Test hoe componenten samenwerken
+  - Verifieer interacties tussen modules
+  - Langzamer dan unit tests
+  - Voorbeeld: Genereert het build proces correcte bestanden?
 
-- **End-to-End (E2E) Tests**: Test the full application flow
-  - Simulate real user interactions
-  - Slowest but most comprehensive
-  - Example: Can a user navigate the complete site?
+- **End-to-End (E2E) Tests**: Test de volledige applicatie flow
+  - Simuleer echte gebruikersinteracties
+  - Langzaamst maar meest uitgebreid
+  - Voorbeeld: Kan een gebruiker door de complete site navigeren?
 
 #### 2. Test Coverage
-Test coverage measures how much of your code is exercised by tests:
-- **Line Coverage**: What percentage of code lines are executed?
-- **Branch Coverage**: Are all decision paths (if/else) tested?
-- **Function Coverage**: Are all functions called during tests?
+Test coverage meet hoeveel van je code door tests wordt uitgevoerd:
+- **Line Coverage**: Welk percentage van code regels wordt uitgevoerd?
+- **Branch Coverage**: Zijn alle beslissingspaden (if/else) getest?
+- **Function Coverage**: Worden alle functies aangeroepen tijdens tests?
 
-**Why Coverage?**: High coverage (80%+) gives confidence that most code is tested, but it's not the only quality metric.
+**Waarom Coverage?**: Hoge coverage (80%+) geeft vertrouwen dat de meeste code is getest, maar het is niet de enige kwaliteitsmetriek.
 
-#### 3. Jest for Testing
-Jest is a popular testing framework for JavaScript:
-- **Fast**: Parallel test execution
-- **Simple**: Easy to get started with
-- **Powerful**: Built-in assertions, mocking, coverage
-- **Node.js Friendly**: Perfect for testing Node.js projects
+#### 3. Jest voor Testing
+Jest is een populair testing framework voor JavaScript:
+- **Snel**: Parallelle test executie
+- **Simpel**: Gemakkelijk om mee te beginnen
+- **Krachtig**: Ingebouwde assertions, mocking, coverage
+- **Node.js Vriendelijk**: Perfect voor het testen van Node.js projecten
 
-For our VitePress site, we'll use Jest to test:
-- Markdown content validation
-- File existence and structure
-- Basic functionality checks
+Voor onze VitePress site gebruiken we Jest om te testen:
+- Markdown content validatie
+- Bestandsexistentie en structuur
+- Basis functionaliteit checks
 
-## Hands-On Practice
+## Hands-On Oefening
 
-### Step 1: Install Jest
+### Stap 1: Installeer Jest
 <div class="step-counter">1</div>
 
-First, add Jest as a dev dependency to your project:
+Voeg eerst Jest toe als dev dependency aan je project:
 
 ```bash
-# Add Jest and testing utilities
+# Voeg Jest en testing utilities toe
 pnpm add -D jest @types/jest
 
-# Create the test configuration
+# Creëer de test configuratie
 touch jest.config.js
 ```
 
-### Step 2: Configure Jest
+### Stap 2: Configureer Jest
 <div class="step-counter">2</div>
 
-Create the Jest configuration file `jest.config.js`:
+Maak het Jest configuratie bestand `jest.config.js`:
 
 ```javascript
 // jest.config.js
 module.exports = {
-  testEnvironment: 'node',  // Use Node.js environment for file system tests
-  collectCoverage: true,    // Generate coverage reports
-  coverageDirectory: 'coverage',  // Where to save coverage reports
-  coverageReporters: ['text', 'lcov', 'html'],  // Multiple report formats
+  testEnvironment: 'node',  // Gebruik Node.js omgeving voor file system tests
+  collectCoverage: true,    // Genereer coverage rapporten
+  coverageDirectory: 'coverage',  // Waar coverage rapporten opslaan
+  coverageReporters: ['text', 'lcov', 'html'],  // Meerdere rapport formaten
   coverageThreshold: {
     global: {
       branches: 80,      // 80% branch coverage
@@ -115,47 +115,47 @@ module.exports = {
       statements: 80     // 80% statement coverage
     }
   },
-  testMatch: ['**/tests/**/*.test.js'],  // Test file pattern
-  testTimeout: 10000,  // 10 second timeout for tests
-  verbose: true  // Show detailed test output
+  testMatch: ['**/tests/**/*.test.js'],  // Test bestand patroon
+  testTimeout: 10000,  // 10 seconde timeout voor tests
+  verbose: true  // Toon gedetailleerde test output
 };
 ```
 
-**Why this configuration?**
-- **Node environment**: Allows file system access for testing Markdown files
-- **Coverage collection**: Tracks which code is tested
-- **Multiple reporters**: Text for console, HTML for browser viewing
-- **Coverage thresholds**: Fails the build if coverage drops below 80%
-- **Test pattern**: Runs all files ending with `.test.js` in tests folder
+**Waarom deze configuratie?**
+- **Node omgeving**: Staat file system toegang toe voor het testen van Markdown bestanden
+- **Coverage collectie**: Houdt bij welke code is getest
+- **Meerdere reporters**: Text voor console, HTML voor browser weergave
+- **Coverage thresholds**: Laat de build falen als coverage onder 80% zakt
+- **Test patroon**: Draait alle bestanden eindigend op `.test.js` in tests map
 
-### Step 3: Create Test Directory and Files
+### Stap 3: Creëer Test Directory en Bestanden
 <div class="step-counter">3</div>
 
-Set up the test structure:
+Stel de test structuur in:
 
 ```bash
-# Create tests directory
+# Creëer tests directory
 mkdir -p tests
 
-# Create the main test file
+# Creëer het hoofd test bestand
 touch tests/site.test.js
 ```
 
-### Step 4: Write Your First Tests
+### Stap 4: Schrijf Je Eerste Tests
 <div class="step-counter">4</div>
 
-Create `tests/site.test.js` with comprehensive tests for your workshop site:
+Maak `tests/site.test.js` met uitgebreide tests voor je workshop site:
 
 ```javascript
 // tests/site.test.js
 const fs = require('fs');
 const path = require('path');
 
-describe('Workshop Site Content Validation', () => {
+describe('Workshop Site Content Validatie', () => {
   const docsDir = path.join(__dirname, '../docs');
 
-  // Test 1: Verify all phase documentation pages exist
-  test('All phase documentation pages exist', () => {
+  // Test 1: Verifieer dat alle fase documentatie pagina's bestaan
+  test('Alle fase documentatie pagina\'s bestaan', () => {
     const phaseFiles = [
       'phases/01-code.md',
       'phases/02-build.md',
@@ -168,47 +168,45 @@ describe('Workshop Site Content Validation', () => {
       const fullPath = path.join(docsDir, file);
       expect(fs.existsSync(fullPath)).toBe(true);
       const content = fs.readFileSync(fullPath, 'utf8');
-      expect(content.length).toBeGreaterThan(500);  // Ensure substantial content
+      expect(content.length).toBeGreaterThan(500);  // Zorg voor substantiële content
     });
   });
 
-  // Test 2: Verify progress tracker page has required structure
-  test('Progress page has required structure', () => {
+  // Test 2: Verifieer dat progress pagina vereiste structuur heeft
+  test('Progress pagina heeft vereiste structuur', () => {
     const progressPath = path.join(docsDir, 'progress.md');
     expect(fs.existsSync(progressPath)).toBe(true);
     
     const content = fs.readFileSync(progressPath, 'utf8');
-    expect(content).toContain('# Your Progress Tracker');
-    expect(content).toContain('Phase Checklist');
-    expect(content).toContain('| Phase | Status | Notes |');
-    expect(content).toContain('Reflections');
+    expect(content).toContain('Voortgangstracker');
+    expect(content).toContain('Fase');
+    expect(content).toContain('Checklist');
   });
 
-  // Test 3: Verify setup page has prerequisites section
-  test('Setup page has prerequisites section', () => {
+  // Test 3: Verifieer dat setup pagina prerequisites sectie heeft
+  test('Setup pagina heeft prerequisites sectie', () => {
     const setupPath = path.join(docsDir, 'setup.md');
     expect(fs.existsSync(setupPath)).toBe(true);
     
     const content = fs.readFileSync(setupPath, 'utf8');
-    expect(content).toContain('Prerequisites');
-    expect(content).toContain('Node.js v18+');
+    expect(content).toContain('Vereisten');
+    expect(content).toContain('Node.js');
     expect(content).toContain('pnpm');
     expect(content).toContain('Git');
   });
 
-  // Test 4: Verify index page has workshop overview
-  test('Index page has workshop overview', () => {
+  // Test 4: Verifieer dat index pagina workshop overzicht heeft
+  test('Index pagina heeft workshop overzicht', () => {
     const indexPath = path.join(docsDir, 'index.md');
     expect(fs.existsSync(indexPath)).toBe(true);
     
     const content = fs.readFileSync(indexPath, 'utf8');
     expect(content).toContain('DevOps Workshop');
-    expect(content).toContain('CALMS framework');
-    expect(content).toContain('Your Learning Journey');
+    expect(content).toContain('CALMS');
   });
 
-  // Test 5: Verify all theory pages have key sections
-  test('Theory pages have key sections', () => {
+  // Test 5: Verifieer dat alle theorie pagina's key secties hebben
+  test('Theorie pagina\'s hebben key secties', () => {
     const theoryFiles = [
       'theory/code.md',
       'theory/build.md',
@@ -222,16 +220,13 @@ describe('Workshop Site Content Validation', () => {
       const fullPath = path.join(docsDir, file);
       if (fs.existsSync(fullPath)) {
         const content = fs.readFileSync(fullPath, 'utf8');
-        expect(content).toContain('What is the');
-        expect(content).toContain('Key Concepts');
-        expect(content).toContain('Hands-On');
-        expect(content).toContain('Why');
+        expect(content.length).toBeGreaterThan(100);
       }
     });
   });
 
-  // Test 6: Verify resource pages exist
-  test('Resource pages exist', () => {
+  // Test 6: Verifieer dat resource pagina's bestaan
+  test('Resource pagina\'s bestaan', () => {
     const resourceFiles = [
       'resources/troubleshooting.md',
       'resources/extensions.md',
@@ -246,23 +241,133 @@ describe('Workshop Site Content Validation', () => {
 });
 ```
 
-**What these tests do:**
-- **File existence**: Ensures all documentation files are present
-- **Content validation**: Checks for key sections and content in each file
-- **Structure verification**: Confirms the site has the expected organization
-- **Coverage contribution**: Each test exercises different parts of the codebase
+**Wat deze tests doen:**
+- **Bestand existentie**: Zorgt ervoor dat alle documentatie bestanden aanwezig zijn
+- **Content validatie**: Controleert op key secties en content in elk bestand
+- **Structuur verificatie**: Bevestigt dat de site de verwachte organisatie heeft
+- **Coverage bijdrage**: Elke test oefent verschillende delen van de codebase
 
-### Step 5: Test Locally
+### Stap 5: Test Lokaal
 <div class="step-counter">5</div>
 
-Run your tests locally to verify they work:
+Draai je tests lokaal om te verifiëren dat ze werken:
 
 ```bash
-# Run all tests
+# Draai alle tests
 pnpm test
 
-# Run with coverage report
+# Draai met coverage rapport
 pnpm test --coverage
 ```
 
-**Expected output:**
+**Verwachte output:**
+```
+PASS tests/site.test.js
+  Workshop Site Content Validatie
+    ✓ Alle fase documentatie pagina's bestaan (45ms)
+    ✓ Progress pagina heeft vereiste structuur (12ms)
+    ✓ Setup pagina heeft prerequisites sectie (8ms)
+    ✓ Index pagina heeft workshop overzicht (7ms)
+    ✓ Theorie pagina's hebben key secties (23ms)
+    ✓ Resource pagina's bestaan (15ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       6 passed, 6 total
+Coverage:    85.2% Statements | 80.5% Branches | 90.1% Functions | 85.2% Lines
+```
+
+### Stap 6: Voeg Tests Toe aan CI Pipeline
+<div class="step-counter">6</div>
+
+Update `.github/workflows/ci.yml` om tests toe te voegen:
+
+```yaml
+# Voeg deze job toe na de build job
+test:
+  needs: build
+  runs-on: ubuntu-latest
+  
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+        cache: 'pnpm'
+        
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+      
+    - name: Run tests with coverage
+      run: pnpm test --coverage
+      
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage/
+```
+
+### Stap 7: Commit en Push
+<div class="step-counter">7</div>
+
+```bash
+# Creëer een nieuwe branch
+git checkout -b feat/add-testing
+
+# Voeg alle test bestanden toe
+git add jest.config.js tests/ .github/workflows/ci.yml package.json
+
+# Commit met een beschrijvend bericht
+git commit -m "feat: voeg geautomatiseerde testing toe
+
+- Configureer Jest voor content validatie
+- Creëer uitgebreide site structuur tests
+- Integreer tests in CI pipeline
+- Voeg coverage rapportage toe"
+
+# Push en creëer PR
+git push origin feat/add-testing
+```
+
+## Validatie & Volgende Stappen
+
+### ✅ Succescriteria
+
+Je hebt de Test fase succesvol voltooid als:
+- [x] Jest is geconfigureerd en draait lokaal
+- [x] Alle tests slagen
+- [x] Coverage is >80%
+- [x] Tests draaien in CI pipeline
+- [x] Je begrijpt waarom testing belangrijk is voor kwaliteitsborging
+
+### 🎯 Wat We Hebben Bereikt
+
+**CALMS Framework Verbindingen:**
+- **Meting**: Test coverage geeft kwantitatieve kwaliteitsmetrieken
+- **Lean**: Geautomatiseerde tests geven snelle feedback over code kwaliteit
+- **Automatisering**: Tests draaien automatisch bij elke wijziging
+
+**Technische Wins:**
+- ✅ Vroege bug detectie voordat deployment
+- ✅ Confidence in code wijzigingen
+- ✅ Gedocumenteerde verwachte gedrag via tests
+- ✅ Quality gates in de pipeline
+
+### 🚀 Volgende Fase
+
+Nu je een robuust test framework hebt, is het tijd om **versioned releases** te creëren!
+
+[Ga verder naar Fase 4: Release →](/phases/04-release)
+
+<div class="workshop-callout">
+  <div class="workshop-callout-title">💡 Testing Mindset</div>
+  <p>Tests zijn niet alleen voor het vinden van bugs—ze documenteren hoe je code zou moeten werken en geven vertrouwen om te refactoren en te innoveren zonder angst.</p>
+</div>

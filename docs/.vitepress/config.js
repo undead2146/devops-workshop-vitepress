@@ -21,31 +21,31 @@ export default withMermaid(
         { text: 'Home', link: '/' },
         { text: 'Setup', link: '/setup' },
         {
-          text: 'DevOps Theory',
+          text: 'DevOps Theorie',
           items: [
-            { text: 'CI/CD Overview', link: '/theory/cicd' },
-            { text: 'Code Phase Theory', link: '/theory/code' },
-            { text: 'Build Phase Theory', link: '/theory/build' },
-            { text: 'Test Phase Theory', link: '/theory/test' },
-            { text: 'Release Phase Theory', link: '/theory/release' },
-            { text: 'Deploy Phase Theory', link: '/theory/deploy' }
+            { text: 'CI/CD Overzicht', link: '/theory/cicd' },
+            { text: 'Code Fase Theorie', link: '/theory/code' },
+            { text: 'Build Fase Theorie', link: '/theory/build' },
+            { text: 'Test Fase Theorie', link: '/theory/test' },
+            { text: 'Release Fase Theorie', link: '/theory/release' },
+            { text: 'Deploy Fase Theorie', link: '/theory/deploy' }
           ]
         },
         {
-          text: 'Workshop Phases',
+          text: 'Workshop Fasen',
           items: [
-            { text: '1. Code Phase', link: '/phases/01-code' },
-            { text: '2. Build Phase', link: '/phases/02-build' },
-            { text: '3. Test Phase', link: '/phases/03-test' },
-            { text: '4. Release Phase', link: '/phases/04-release' },
-            { text: '5. Deploy Phase', link: '/phases/05-deploy' }
+            { text: '1. Code Fase', link: '/phases/01-code' },
+            { text: '2. Build Fase', link: '/phases/02-build' },
+            { text: '3. Test Fase', link: '/phases/03-test' },
+            { text: '4. Release Fase', link: '/phases/04-release' },
+            { text: '5. Deploy Fase', link: '/phases/05-deploy' }
           ]
         },
         {
-          text: 'Resources',
+          text: 'Bronnen',
           items: [
-            { text: 'Troubleshooting', link: '/resources/troubleshooting' },
-            { text: 'Extensions', link: '/resources/extensions' },
+            { text: 'Probleemoplossing', link: '/resources/troubleshooting' },
+            { text: 'Uitbreidingen', link: '/resources/extensions' },
             { text: 'Feedback', link: '/resources/feedback' }
           ]
         }
@@ -54,40 +54,40 @@ export default withMermaid(
       sidebar: {
         '/': [
           {
-            text: 'Getting Started',
+            text: 'Aan de Slag',
             items: [
-              { text: 'Welcome', link: '/' },
-              { text: 'Setup & Prerequisites', link: '/setup' },
-              { text: 'Workshop Schedule', link: '/schedule' },
-              { text: 'Your Progress', link: '/progress' }
+              { text: 'Welkom', link: '/' },
+              { text: 'Setup & Vereisten', link: '/setup' },
+              { text: 'Workshop Schema', link: '/schedule' },
+              { text: 'Jouw Voortgang', link: '/progress' }
             ]
           },
           {
-            text: 'DevOps Theory',
+            text: 'DevOps Theorie',
             items: [
-              { text: 'CI/CD Overview', link: '/theory/cicd' },
-              { text: 'Code Phase Theory', link: '/theory/code' },
-              { text: 'Build Phase Theory', link: '/theory/build' },
-              { text: 'Test Phase Theory', link: '/theory/test' },
-              { text: 'Release Phase Theory', link: '/theory/release' },
-              { text: 'Deploy Phase Theory', link: '/theory/deploy' }
+              { text: 'CI/CD Overzicht', link: '/theory/cicd' },
+              { text: 'Code Fase Theorie', link: '/theory/code' },
+              { text: 'Build Fase Theorie', link: '/theory/build' },
+              { text: 'Test Fase Theorie', link: '/theory/test' },
+              { text: 'Release Fase Theorie', link: '/theory/release' },
+              { text: 'Deploy Fase Theorie', link: '/theory/deploy' }
             ]
           },
           {
-            text: 'Workshop Phases',
+            text: 'Workshop Fasen',
             items: [
-              { text: '1. Code Phase', link: '/phases/01-code' },
-              { text: '2. Build Phase', link: '/phases/02-build' },
-              { text: '3. Test Phase', link: '/phases/03-test' },
-              { text: '4. Release Phase', link: '/phases/04-release' },
-              { text: '5. Deploy Phase', link: '/phases/05-deploy' }
+              { text: '1. Code Fase', link: '/phases/01-code' },
+              { text: '2. Build Fase', link: '/phases/02-build' },
+              { text: '3. Test Fase', link: '/phases/03-test' },
+              { text: '4. Release Fase', link: '/phases/04-release' },
+              { text: '5. Deploy Fase', link: '/phases/05-deploy' }
             ]
           },
           {
-            text: 'Resources',
+            text: 'Bronnen',
             items: [
-              { text: 'Troubleshooting', link: '/resources/troubleshooting' },
-              { text: 'Extensions', link: '/resources/extensions' },
+              { text: 'Probleemoplossing', link: '/resources/troubleshooting' },
+              { text: 'Uitbreidingen', link: '/resources/extensions' },
               { text: 'Feedback', link: '/resources/feedback' }
             ]
           }
@@ -99,7 +99,7 @@ export default withMermaid(
       ],
 
       footer: {
-        message: 'DevOps Workshop - Learn by Doing',
+        message: 'DevOps Workshop - Leren door te Doen',
         copyright: '© 2025 GeneralsHub'
       },
 
@@ -112,8 +112,8 @@ export default withMermaid(
       lineNumbers: true,
       container: {
         tipLabel: '💡 Tip',
-        warningLabel: '⚠️ Warning',
-        dangerLabel: '🚨 Important',
+        warningLabel: '⚠️ Waarschuwing',
+        dangerLabel: '🚨 Belangrijk',
         infoLabel: 'ℹ️ Info',
         detailsLabel: 'Details'
       }
