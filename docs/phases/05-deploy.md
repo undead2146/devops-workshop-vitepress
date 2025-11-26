@@ -102,7 +102,7 @@ jobs:
 
       - name: Install dependencies with pnpm and build
         run: |
-          pnpm install --frozen-lockfile=false
+          pnpm install
           pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

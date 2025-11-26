@@ -202,7 +202,7 @@ jobs:
         with:
           node-version: 18
           cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm install
       - run: pnpm build
       - uses: actions/upload-artifact@v4
         with:

@@ -111,7 +111,7 @@ Maak het GitHub Actions workflow bestand om je build te automatiseren:
              cache: 'pnpm'
 
          - name: Install dependencies
-           run: pnpm install --frozen-lockfile
+           run: pnpm install
 
          - name: Build the site
            run: pnpm build

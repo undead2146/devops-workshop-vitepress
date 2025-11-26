@@ -39,7 +39,7 @@ Een **artifact** is de onveranderlijke output van een build.
 ### 2. Dependency Management
 - **pnpm**: Onze package manager
 - **Lockfile** (`pnpm-lock.yaml`): Garandeert exacte versies van dependencies
-- **CI Install**: `pnpm install --frozen-lockfile` (strikt, geen updates toegestaan)
+- **CI Install**: `pnpm install` (strikt, geen updates toegestaan)
 
 **Waarom frozen lockfile?** Voorkomt dat builds breken omdat een dependency stiekem is geüpdatet.
 
