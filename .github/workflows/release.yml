@@ -1,5 +1,4 @@
 name: Release Phase
-
 on:
   push:
     tags:
